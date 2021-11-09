@@ -1,25 +1,31 @@
 <script>
 	// import Header from '$lib/header/Header.svelte';
+	import Background from '$lib/background/Background.svelte';
 	import '../app.css';
 
-	let h, w, mouseXpercentage, mouseYpercentage, background
+	import { tweened } from 'svelte/motion';
+
+	let h, w
+
+	const mouseXPercentage = tweened(0, { duration: 1000})
+	const mouseYPercentage = tweened(0, { duration: 1000})
 
 	const moveGradient = (e) => {
-		mouseXpercentage = Math.round(e.pageX / w * 100);
-		mouseYpercentage = Math.round(e.pageY / h * 100);
-		background = document.getElementById('radial-gradient')
-		background.style.setProperty('background', 'radial-gradient(at ' + mouseXpercentage + '% ' + mouseYpercentage + '%, #3498db, #9b59b6)')
+		mouseXPercentage.set(Math.round(e.pageX / w * 100))
+		mouseYPercentage.set(Math.round(e.pageY / h * 100))
 	}
 </script>
 
 <!-- <Header /> -->
 
-<main id='radial-gradient' 
-	on:mousemove={moveGradient}
-	bind:clientWidth={w} bind:clientHeight={h} 
->
+<main on:mousemove={moveGradient}
+	bind:clientWidth={w} 
+	bind:clientHeight={h} >
 	<slot />
 </main>
+<Background 
+	mouseXPercentage={$mouseXPercentage} 
+	mouseYPercentage={$mouseYPercentage} />
 
 <footer>
 	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
@@ -35,22 +41,7 @@
 		max-width: 1024px;
 		margin: 0 auto;
 		box-sizing: border-box;
-	}
-
-	#radial-gradient {
-		position:fixed;
-		top:0px;
-		left:0px;
-		height:100%;
-		width:100%;
-		
-		/* Fallback if gradeints don't work */
-		background: #9b59b6;
-		/* Linear gradient... */
-		background: 
-			radial-gradient(
-			at center, #3498db, #9b59b6
-			);
+		z-index: 1;
 	}
 
 	/* footer {
