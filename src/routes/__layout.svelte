@@ -1,31 +1,22 @@
 <script>
-	// import Header from '$lib/header/Header.svelte';
+	import Header from '$lib/header/Header.svelte';
 	import Background from '$lib/background/Background.svelte';
 	import '../app.css';
-
-	import { tweened } from 'svelte/motion';
+	// import {purpleGradientX, purpleGradientY} from '$lib/stores'
+	import { updateGradients } from '$lib/helpers';
 
 	let h, w
-
-	const mouseXPercentage = tweened(0, { duration: 1000})
-	const mouseYPercentage = tweened(0, { duration: 1000})
-
-	const moveGradient = (e) => {
-		mouseXPercentage.set(Math.round(e.pageX / w * 100))
-		mouseYPercentage.set(Math.round(e.pageY / h * 100))
-	}
 </script>
 
-<!-- <Header /> -->
 
-<main on:mousemove={moveGradient}
+<main 
+	on:mousemove={(e) => updateGradients(e, w, h)}
 	bind:clientWidth={w} 
 	bind:clientHeight={h} >
+	<Header />
 	<slot />
 </main>
-<Background 
-	mouseXPercentage={$mouseXPercentage} 
-	mouseYPercentage={$mouseYPercentage} />
+<Background />
 
 <footer>
 	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
@@ -36,7 +27,6 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		padding: 1rem;
 		width: 100%;
 		max-width: 1024px;
 		margin: 0 auto;
