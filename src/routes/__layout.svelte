@@ -13,8 +13,8 @@
 	on:mousemove={(e) => updateGradients(e, w, h)}
 	bind:clientWidth={w} 
 	bind:clientHeight={h} >
-	<Header />
-	<slot />
+	<!-- <Header /> -->
+	<!-- <slot /> -->
 </main>
 <Background />
 
@@ -28,7 +28,7 @@
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		max-width: 1024px;
+		/* max-width: 1024px; */
 		margin: 0 auto;
 		box-sizing: border-box;
 		z-index: 1;

@@ -15,9 +15,12 @@
 		left:0px;
 		height:100%;
 		width:100%;
+		z-index: 0;
 		
-		/* fallback if gradeints don't work */
-		background: rgba(255, 200, 0, 0.20);
-		background: radial-gradient(at var(--purpleX) var(--purpleY), rgba(183, 0, 164, 0.60), rgba(255, 200, 0, 0));
+		background: radial-gradient(
+			at var(--purpleX) var(--purpleY),
+			hsla(306, 50%, 80%, 0.5) 20%, 
+			hsla(47, 100%, 80%, 0.2)
+		);
 	}
 </style>

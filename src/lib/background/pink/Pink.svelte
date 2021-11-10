@@ -1,8 +1,6 @@
 <script>
   export let pinkGradientX
   export let pinkGradientY
-
-  // $: console.log(pinkGradientX)
 </script>
 
 <div 
@@ -17,9 +15,12 @@
 		left:0px;
 		height:100%;
 		width:100%;
+    z-index: 0;
 		
-		/* fallback if gradeints don't work */
-		/* background: rgba(255, 200, 0, 0.20); */
-		background: radial-gradient(at var(--pinkX) var(--pinkY), rgba(255, 94, 94, 0.60), rgba(255, 200, 0, 0));
+		background: radial-gradient(
+      farthest-side at var(--pinkX) var(--pinkY),
+      hsla(0, 100%, 80%, 0.4) 10%,
+      hsla(0, 0%, 100%, 0.7)
+    );
 	}
 </style>

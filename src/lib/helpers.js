@@ -4,50 +4,58 @@ import {
   purpleGradientX,
   purpleGradientY,
   pinkGradientX,
-  pinkGradientY } from '$lib/stores'
+  pinkGradientY,
+  orangeGradientX,
+  orangeGradientY
+} from '$lib/stores'
 
 export const updateGradients = (event, width, height) => {
-  purpleGradientX.set(Math.round(event.pageX / width * 100))
-	purpleGradientY.set(Math.round(event.pageY / height * 100))
+  updatePink(event, width, height)
+  updatePurple(event, width, height)
+  
+}
 
-  const currentPurpleX = get(purpleGradientX)
-  const currentPurpleY = get(purpleGradientY)
-  const currentPinkX = get(pinkGradientX)
-  const currentPinkY = get(pinkGradientY)
+const updatePink = (event, width, height) => {
+  pinkGradientX.set(clamp(event.pageX / width * 100, 0, 100))
+	pinkGradientY.set(clamp(event.pageY / height * 100, 0, 100))
+}
 
-  // if (!currentPinkX) { console.log(currentPurpleY)}
+const updatePurple = (event, width, height) => {
+  const currentPurpleX = get(purpleGradientX) * width / 100
+  const currentPurpleY = get(purpleGradientY) * height / 100
 
-  const minDistance = 100
+  const minDistance = 500
   const minDistanceSquared = minDistance ** 2
 
-  const purplePinkXDistance = currentPurpleX - currentPinkX
-  const purplePinkYDistance = currentPurpleY - currentPinkY
+  const pinkXDistance = event.pageX - currentPurpleX
+  const pinkYDistance = event.pageY - currentPurpleY
   
-  const purplePinkDistanceSquared = purplePinkXDistance ** 2 + purplePinkYDistance ** 2
+  const pinkDistanceSquared = pinkXDistance ** 2 + pinkYDistance ** 2
 
-  if (purplePinkDistanceSquared < minDistanceSquared) {
-    const slope = (currentPinkY - currentPurpleY) / (currentPinkX - currentPurpleX)
+  if (pinkDistanceSquared < minDistanceSquared) {
+    const slope = (currentPurpleY - event.pageY) / (currentPurpleX - event.pageX)
 
     const slopeSquared = slope ** 2
-    const dx = 1 / (1 + slopeSquared) ** 1/2
-    const dy = slope * dx
+    const r = (1 + slopeSquared) ** 0.5
+    const dx = minDistance / r
+    const dy = (minDistance * slope) / r
 
-    const pointAX = currentPurpleX + dx
-    const pointAY = currentPurpleY + dy
-    const pointBX = currentPurpleX + dx
-    const pointBY = currentPurpleY + dy
+    const pointAX = event.pageX + dx
+    const pointAY = event.pageY + dy
+    const pointBX = event.pageX - dx
+    const pointBY = event.pageY - dy
 
-    const aDistanceSquared = (currentPinkX - pointAX) ** 2 + (currentPinkY - pointAY)
-    const bDistanceSquared = (currentPinkX - pointBX) ** 2 + (currentPinkY - pointBY)
+    const aDistanceSquared = (currentPurpleX - pointAX) ** 2 + (currentPurpleY - pointAY) ** 2
+    const bDistanceSquared = (currentPurpleX - pointBX) ** 2 + (currentPurpleY - pointBY) ** 2
 
     if (aDistanceSquared < bDistanceSquared) {
-      pinkGradientX.set(pointAX)
-      pinkGradientY.set(pointAY)
+      purpleGradientX.set(clamp(pointAX/ width * 100, 10, 90))
+      purpleGradientY.set(clamp(pointAY/ height * 100, 10, 90))
     } else {
-      pinkGradientX.set(pointBX)
-      pinkGradientY.set(pointBY)
+      purpleGradientX.set(clamp(pointBX/ width * 100, 10, 90))
+      purpleGradientY.set(clamp(pointBY/ height * 100, 10, 90))
     }
-  } else {
-    console.log('doesnt need to move')
   }
 }
+
+const clamp = (num, min, max) => Math.round(Math.min(Math.max(num, min), max)) 
