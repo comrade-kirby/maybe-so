@@ -2,7 +2,6 @@
 	import Header from '$lib/header/Header.svelte';
 	import Background from '$lib/background/Background.svelte';
 	import '../app.css';
-	// import {purpleGradientX, purpleGradientY} from '$lib/stores'
 	import { updateGradients } from '$lib/helpers';
 
 	let h, w

@@ -1,27 +1,20 @@
 <script>
 	import Purple from '$lib/background/purple/Purple.svelte'
 	import Pink from '$lib/background/pink/Pink.svelte'
+
 	import { 
-		purpleGradientX,
-		purpleGradientY,
-		pinkGradientX,
-		pinkGradientY,
-		orangeGradientX,
-		orangeGradientY 
+		purpleGradient,
+		pinkGradient,
+		orangeGradient
 	} from '$lib/stores'
+
 import Orange from './orange/Orange.svelte';
 </script>
 
 <div class='background' >
-	<Pink 
-		pinkGradientX={$pinkGradientX} 
-		pinkGradientY={$pinkGradientY} />
-	<Purple 
-		purpleGradientX={$purpleGradientX} 
-		purpleGradientY={$purpleGradientY} />
-	<!-- <Orange 
-		orangeGradientX={$orangeGradientX} 
-		orangeGradientY={$orangeGradientY} /> -->
+	<Pink pinkGradient={$pinkGradient} />
+	<Purple purpleGradient={$purpleGradient} />
+	<Orange orangeGradient={$orangeGradient} />
 </div>
 
 <style>

@@ -1,61 +1,152 @@
 import { get } from 'svelte/store'
 
 import {
-  purpleGradientX,
-  purpleGradientY,
-  pinkGradientX,
-  pinkGradientY,
-  orangeGradientX,
-  orangeGradientY
+  purpleGradient,
+  pinkGradient,
+  orangeGradient
 } from '$lib/stores'
 
 export const updateGradients = (event, width, height) => {
   updatePink(event, width, height)
   updatePurple(event, width, height)
-  
+  updateOrange(event, width, height)
 }
 
 const updatePink = (event, width, height) => {
-  pinkGradientX.set(clamp(event.pageX / width * 100, 0, 100))
-	pinkGradientY.set(clamp(event.pageY / height * 100, 0, 100))
+  const pinkX = clamp(event.pageX / width * 100, 0, 100)
+  const pinkY = clamp(event.pageY / height * 100, 0, 100)
+  
+  pinkGradient.set([pinkX, pinkY])
 }
 
 const updatePurple = (event, width, height) => {
-  const currentPurpleX = get(purpleGradientX) * width / 100
-  const currentPurpleY = get(purpleGradientY) * height / 100
-
   const minDistance = 500
+  const minPercent = 10
+  const maxPercent = 90
+
+  const percentCoords = get(purpleGradient)
+  const pxCoords = convertPercentilesToCoords(percentCoords, width, height)
+
   const minDistanceSquared = minDistance ** 2
-
-  const pinkXDistance = event.pageX - currentPurpleX
-  const pinkYDistance = event.pageY - currentPurpleY
   
-  const pinkDistanceSquared = pinkXDistance ** 2 + pinkYDistance ** 2
+  const distanceSquared = calculateDistanceSquared(event, pxCoords)
 
-  if (pinkDistanceSquared < minDistanceSquared) {
-    const slope = (currentPurpleY - event.pageY) / (currentPurpleX - event.pageX)
+  if (distanceSquared < minDistanceSquared) {
+    const newCoords = calcNewCoords(event, pxCoords, minDistance) 
+    const newPercentCoords = calculatePercentile(newCoords, width, height)
+    const clampedPercentCoords = clampPoint(newPercentCoords, minPercent, maxPercent)
 
-    const slopeSquared = slope ** 2
-    const r = (1 + slopeSquared) ** 0.5
-    const dx = minDistance / r
-    const dy = (minDistance * slope) / r
-
-    const pointAX = event.pageX + dx
-    const pointAY = event.pageY + dy
-    const pointBX = event.pageX - dx
-    const pointBY = event.pageY - dy
-
-    const aDistanceSquared = (currentPurpleX - pointAX) ** 2 + (currentPurpleY - pointAY) ** 2
-    const bDistanceSquared = (currentPurpleX - pointBX) ** 2 + (currentPurpleY - pointBY) ** 2
-
-    if (aDistanceSquared < bDistanceSquared) {
-      purpleGradientX.set(clamp(pointAX/ width * 100, 10, 90))
-      purpleGradientY.set(clamp(pointAY/ height * 100, 10, 90))
-    } else {
-      purpleGradientX.set(clamp(pointBX/ width * 100, 10, 90))
-      purpleGradientY.set(clamp(pointBY/ height * 100, 10, 90))
-    }
+    purpleGradient.set(clampedPercentCoords)
   }
+}
+
+const updateOrange = (event, width, height) => {
+  const minDistance = 1000
+  const minPercent = 10
+  const maxPercent = 90
+
+  const percentCoords = get(orangeGradient)
+  const pxCoords = convertPercentilesToCoords(percentCoords, width, height)
+
+  const minDistanceSquared = minDistance ** 2
+  
+  const distanceSquared = calculateDistanceSquared(event, pxCoords)
+
+  if (distanceSquared < minDistanceSquared) {
+    const newCoords = calcNewCoords(event, pxCoords, minDistance) 
+    const newPercentCoords = calculatePercentile(newCoords, width, height)
+    const clampedPercentCoords = clampPoint(newPercentCoords, minPercent, maxPercent)
+
+    orangeGradient.set(clampedPercentCoords)
+  }
+}
+
+const convertPercentilesToCoords = (percentileArray, width, height) => {
+  const coords = [
+    percentileArray[0] * width / 100, 
+    percentileArray[1] * height / 100
+  ]
+
+  return coords
+}
+
+const calculateDistanceSquared = (event, coords) => {
+  const xDistance = event.pageX - coords[0]
+  const yDistance = event.pageY - coords[1]
+
+  const distanceSquared = xDistance ** 2 + yDistance ** 2
+
+  return distanceSquared
+}
+
+const calculateSlope = (event, coords) => {
+  const dy = coords[1] - event.pageY
+  const dx = coords[0] - event.pageX
+  const slope = dy / dx
+
+  return slope
+}
+
+const calcNewCoords = (event, pxCoords, distance) => {
+  const potentialPointsAtDistance = calculatePointsAtDistance(event, pxCoords, distance)
+
+  const bestNewCoords = calculateBestPoint(pxCoords, potentialPointsAtDistance)
+
+  return bestNewCoords
+}
+
+const calculatePointsAtDistance = (event, coords, distance) => {
+  const slope = calculateSlope(event, coords)
+
+  const slopeSquared = slope ** 2
+  const r = (1 + slopeSquared) ** 0.5
+  const dx = distance / r
+  const dy = (distance * slope) / r
+
+  const pointA = [event.pageX + dx, event.pageY + dy]
+  const pointB = [event.pageX - dx, event.pageY - dy]
+
+  return [pointA, pointB]
+}
+
+const calculateBestPoint = (coords, potentialPointsArray) => {
+  const pointA = potentialPointsArray[0]
+  const pointB = potentialPointsArray[1]
+
+  const aDistanceArray = [
+    coords[0] - pointA[0],
+    coords[1] - pointA[1]
+  ]
+
+  const bDistanceArray = [
+    coords[0] - pointB[0],
+    coords[1] - pointB[1]
+  ]
+
+  const aDistanceSquared = (aDistanceArray[0]) ** 2 + (aDistanceArray[1]) ** 2
+  const bDistanceSquared = (bDistanceArray[0]) ** 2 + (bDistanceArray[1]) ** 2
+
+  const bestPoint = aDistanceSquared < bDistanceSquared ? pointA : pointB
+
+  return bestPoint
+}
+
+const calculatePercentile = (point, width, height) => {
+  const percentileArray = [
+    point[0] / width * 100,
+    point[1] / height * 100
+  ]
+
+  return percentileArray
+}
+
+const clampPoint = (point, min, max) => {
+  const clampedPoint = [
+    clamp(point[0], min, max), 
+    clamp(point[1], min, max)
+  ]
+
+  return clampedPoint
 }
 
 const clamp = (num, min, max) => Math.round(Math.min(Math.max(num, min), max)) 

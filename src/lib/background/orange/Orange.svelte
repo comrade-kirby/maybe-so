@@ -1,11 +1,10 @@
 <script>
-  export let orangeGradientX
-  export let orangeGradientY
+  export let orangeGradient
 </script>
 
 <div 
   id='orange'
-  style='--orangeX: {orangeGradientX}%; --orangeY: {orangeGradientY}%'>
+  style='--orangeX: {orangeGradient[0]}%; --orangeY: {orangeGradient[1]}%'>
 </div>
 
 <style>
@@ -15,11 +14,11 @@
 		left:0px;
 		height:100%;
 		width:100%;
-    z-index: 0;
+    z-index: -2;
 		
 		background: radial-gradient(
       farthest-side at var(--orangeX) var(--orangeY),
-      hsla(25, 100%, 61%, 0.4) 10%,
+      hsla(25, 100%, 54%, 0.7) 10%,
       hsla(0, 0%, 100%, 0.7)
     );
 	}

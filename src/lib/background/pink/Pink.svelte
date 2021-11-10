@@ -1,11 +1,10 @@
 <script>
-  export let pinkGradientX
-  export let pinkGradientY
+  export let pinkGradient
 </script>
 
 <div 
   id='pink'
-  style='--pinkX: {pinkGradientX}%; --pinkY: {pinkGradientY}%'>
+  style='--pinkX: {pinkGradient[0]}%; --pinkY: {pinkGradient[1]}%'>
 </div>
 
 <style>
@@ -19,8 +18,8 @@
 		
 		background: radial-gradient(
       farthest-side at var(--pinkX) var(--pinkY),
-      hsla(0, 100%, 80%, 0.4) 10%,
-      hsla(0, 0%, 100%, 0.7)
+      hsla(0, 100%, 80%, 0.3) 10%,
+      hsla(0, 0%, 100%, 0.5)
     );
 	}
 </style>

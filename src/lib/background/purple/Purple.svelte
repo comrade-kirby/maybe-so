@@ -1,11 +1,10 @@
 <script>
-  export let purpleGradientX
-  export let purpleGradientY
+  export let purpleGradient
 </script>
 
 <div 
   id='purple'
-  style='--purpleX: {purpleGradientX}%; --purpleY: {purpleGradientY}%'>
+  style='--purpleX: {purpleGradient[0]}%; --purpleY: {purpleGradient[1]}%'>
 </div>
 
 <style>
@@ -15,11 +14,11 @@
 		left:0px;
 		height:100%;
 		width:100%;
-		z-index: 0;
+		z-index: -1;
 		
 		background: radial-gradient(
 			at var(--purpleX) var(--purpleY),
-			hsla(306, 50%, 80%, 0.5) 20%, 
+			hsla(306, 50%, 70%, 0.5) 20%, 
 			hsla(47, 100%, 80%, 0.2)
 		);
 	}
