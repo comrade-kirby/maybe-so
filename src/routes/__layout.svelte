@@ -12,8 +12,8 @@
 	on:mousemove={(e) => updateGradients(e, w, h)}
 	bind:clientWidth={w} 
 	bind:clientHeight={h} >
-	<!-- <Header /> -->
-	<!-- <slot /> -->
+	<Header />
+	<slot />
 </main>
 <Background />
 
