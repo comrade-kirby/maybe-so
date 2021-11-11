@@ -18,8 +18,9 @@
 		
 		background: radial-gradient(
 			at var(--purpleX) var(--purpleY),
-			hsla(306, 50%, 70%, 0.5) 20%, 
-			hsla(47, 100%, 80%, 0.2)
+			hsla(306, 100%, 85%, 0.5) 40%, 
+      hsla(0, 0%, 100%, 0.3) 80%, 
+			transparent
 		);
 	}
 </style>

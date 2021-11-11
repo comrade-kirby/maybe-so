@@ -18,8 +18,9 @@
 		
 		background: radial-gradient(
       farthest-side at var(--pinkX) var(--pinkY),
-      hsla(0, 100%, 80%, 0.4) 10%,
-      hsla(0, 0%, 100%, 0.6)
+      hsla(0, 100%, 85%, 0.5) 20%,
+      hsla(47, 100%, 80%, 0.1) 60%,
+      transparent 80%
     );
 	}
 </style>
