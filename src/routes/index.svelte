@@ -3,30 +3,18 @@
 </script>
 
 <script>
-	import Counter from '$lib/Counter.svelte';
+	import Button from '$lib/button/Button.svelte'
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Maybe So</title>
 </svelte:head>
 
 <section>
 	<h1>
-		<div class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</div>
-
-		to your new<br />SvelteKit app
+		<span>(MAYBE SO)</span> is a digital creative studio that builds unique and accessible brands and web experiences.
 	</h1>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
+	<Button text='LET’S MAKE SOMETHING COOL TOGETHER' />
 </section>
 
 <style>
@@ -34,26 +22,17 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		align-items: center;
+		align-items: flex-start;
 		flex: 1;
+		padding: 260px 90px 200px;
 	}
 
 	h1 {
 		width: 100%;
 	}
 
-	.welcome {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	span {
+		font-family: EditorialNew;
+		font-weight: 200;
 	}
 </style>
