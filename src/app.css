@@ -1,14 +1,14 @@
 @font-face {
-  font-family: EditorialNew;
-  src: url('/EditorialNew-Light.otf') format('opentype');
+	font-family: EditorialNew;
+  src: url('/EditorialNew-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
-  font-family: EditorialNew;
-  src: url('/EditorialNew-Regular.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
+	font-family: EditorialNew;
+	src: url('/EditorialNew-Light.otf') format('opentype');
+	font-weight: 300;
+	font-style: normal;
 }
 @font-face {
   font-family: EditorialNew;
@@ -62,6 +62,13 @@ h1 {
 	margin: 0;
 }
 
+h2 {
+	font-family: EditorialNew;
+	font-size: 5.25rem;
+	font-weight: 200;
+	margin: 0;
+}
+
 h3 {
 	font-family: Sneak;
 	font-weight: 700;
@@ -71,11 +78,10 @@ h3 {
 
 h4 {
 	font-family: EditorialNew;
-	font-weight: 200;
+	font-weight: 300;
 	font-size: 2rem;
+	margin: 0;
 }
-
-h2,
 
 a:hover {
 	text-decoration: underline;

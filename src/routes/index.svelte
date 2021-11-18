@@ -5,6 +5,7 @@
 <script>
 import Intro from '$lib/Intro.svelte';
 import OurWork from '$lib/OurWork.svelte';
+import WhatWeDo from '$lib/WhatWeDo.svelte';
 </script>
 
 <svelte:head>
@@ -13,6 +14,7 @@ import OurWork from '$lib/OurWork.svelte';
 
 <Intro />
 <OurWork />
+<WhatWeDo />
 
 <style>
 
