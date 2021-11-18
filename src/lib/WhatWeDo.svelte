@@ -55,7 +55,6 @@
   h2 {
     text-align: center;
     margin: 180px 0;
-
   }
 
   h4 {
@@ -91,9 +90,6 @@
   }
 
   .offering-details {
-    font-family: Sneak;
-    font-size: 1.125rem;
-    line-height: 1.625rem;
     list-style-type: none;
     padding: 0;
   }
@@ -104,6 +100,6 @@
 
   path {
     stroke: var(--black);
-    stroke-width: 3px;
+    stroke-width: 1px;
   }
 </style>

@@ -9,8 +9,8 @@
 <style>
   .our-work {
 		padding: 100px 60px;
-		border-top: 1px solid var(--black);
-		border-bottom: 1px solid var(--black);
+		border-top: 0.5px solid var(--black);
+		border-bottom: 0.5px solid var(--black);
 	}
 
 	.work {

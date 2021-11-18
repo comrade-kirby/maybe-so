@@ -18,7 +18,7 @@
 		
 		background: radial-gradient(
       farthest-side at var(--orangeX) var(--orangeY),
-      hsla(25, 100%, 70%, 0.6) 20%,
+      hsla(25, 100%, 80%, 0.6) 20%,
       hsla(0, 0%, 100%, 0.5) 70%, 
       transparent
     );

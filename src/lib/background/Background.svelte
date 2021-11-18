@@ -24,7 +24,7 @@ import Orange from './orange/Orange.svelte';
 		left:0px;
 		height:100%;
 		width:100%;
-		background-color: hsla(47, 100%, 70%, 0.4);
+		background-color: hsla(47, 100%, 80%, 0.4);
 		z-index: -1;
 	}
 </style>
