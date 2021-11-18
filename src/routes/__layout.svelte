@@ -1,5 +1,4 @@
 <script>
-	// import Header from '$lib/header/Header.svelte';
 	import Background from '$lib/background/Background.svelte';
 	import '../app.css';
 	import { updateGradients } from '$lib/helpers';
@@ -18,11 +17,12 @@
 
 <style>
 	main {
+		box-sizing: border-box;
 		flex: 1;
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		margin: 0 auto;
+		padding: 0 90px;
 		box-sizing: border-box;
 		z-index: 1;
 	}

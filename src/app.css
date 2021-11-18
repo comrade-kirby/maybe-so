@@ -1,36 +1,36 @@
 @font-face {
   font-family: EditorialNew;
-  src: url('static/EditorialNew-Light.otf') format('opentype');
+  src: url('/EditorialNew-Light.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: EditorialNew;
-  src: url('static/EditorialNew-Regular.otf') format('opentype');
+  src: url('/EditorialNew-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: EditorialNew;
-  src: url('static/EditorialNew-UltraLight.otf') format('opentype');
+  src: url('/EditorialNew-UltraLight.otf') format('opentype');
   font-weight: 200;
   font-style: normal;
 }
 @font-face {
   font-family: Sneak;
-  src: url('static/Sneak-Regular.otf') format('opentype');
+  src: url('/Sneak-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: Sneak;
-  src: url('static/Sneak-Bold.otf') format('opentype');
-  font-weight: 600;
+  src: url('/Sneak-Bold.otf') format('opentype');
+  font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: Sneak;
-  src: url('static/Sneak-Light.otf') format('opentype');
+  src: url('/Sneak-Light.otf') format('opentype');
   font-weight: 200;
   font-style: normal;
 }
@@ -38,13 +38,14 @@
 :root {
 	--black: #262626;
 	--transparent-white: hsla(0, 0%, 100%, 0.2);
-	font-family: 'EditorialNew';
+	font-family: EditorialNew;
 }
 
 body {
 	min-height: 100vh;
 	margin: 0;
 	color: var(--black);
+	background-color: hsla(0, 0%, 100%,);
 }
 
 #svelte {
@@ -60,6 +61,20 @@ h1 {
 	line-height: 5.625rem;
 	margin: 0;
 }
+
+h3 {
+	font-family: Sneak;
+	font-weight: 700;
+	font-size: 2.25rem;
+	margin: 0;
+}
+
+h4 {
+	font-family: EditorialNew;
+	font-weight: 200;
+	font-size: 2rem;
+}
+
 h2,
 
 a:hover {

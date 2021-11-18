@@ -3,36 +3,17 @@
 </script>
 
 <script>
-	import Button from '$lib/button/Button.svelte'
+import Intro from '$lib/Intro.svelte';
+import OurWork from '$lib/OurWork.svelte';
 </script>
 
 <svelte:head>
 	<title>Maybe So</title>
 </svelte:head>
 
-<section>
-	<h1>
-		<span>(MAYBE SO)</span> is a digital creative studio that builds unique and accessible brands and web experiences.
-	</h1>
-	<Button text='LET’S MAKE SOMETHING COOL TOGETHER' />
-</section>
+<Intro />
+<OurWork />
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: flex-start;
-		flex: 1;
-		padding: 260px 90px 200px;
-	}
 
-	h1 {
-		width: 100%;
-	}
-
-	span {
-		font-family: EditorialNew;
-		font-weight: 200;
-	}
 </style>
