@@ -1,43 +1,47 @@
 <script>
-
+  const offeringBottomMargin = 90
+  let h = offeringBottomMargin
 </script>
 
-<section class='what-we-do'>
+<section class='what-we-do' style='--bottom-margin: {offeringBottomMargin}px'>
   <h2>WHAT WE DO</h2>
-  <div class='what-we-do-offerings'>
-    <h4 class='offering-title order-1'>BRAND STRATEGY</h4>
-    <ul class='offering-details order-2'>
+  <div class='what-we-do-offerings' bind:clientHeight={h} >
+    <h4 class='offering-title'>BRAND STRATEGY</h4>
+    <ul class='offering-details'>
       <li>User Research</li>
       <li>Competitive Analysis</li>
       <li>Experience and Journey Mapping</li>
       <li>User Persona Development</li>
     </ul>
-    <ul class='offering-details order-3'>
+    <ul class='offering-details'>
       <li>Visual Branding</li>
       <li>Brand Guides / Style Manuals</li>
       <li>Social Media Collateral</li>
       <li>Block Design / Page Layout</li>
     </ul>
-    <h4 class='offering-title order-4'>GRAPHIC DESIGN</h4>
-    <h4 class='offering-title order-5'>WEB DESIGN</h4>
-    <ul class='offering-details order-6'>
+    <h4 class='offering-title'>GRAPHIC DESIGN</h4>
+    <h4 class='offering-title'>WEB DESIGN</h4>
+    <ul class='offering-details'>
       <li>Information Architecture & Site Mapping</li>
       <li>UX Writing & Content Design</li>
       <li>Low Fidelity Wireframe Prototypes</li>
       <li>High Fidelity Interactive Prototypes</li>
     </ul>
-    <ul class='offering-details order-7'>
+    <ul class='offering-details'>
       <li>Email Campaigns & Newsletters</li>
       <li>Blog Content</li>
       <li>Social Media Campaigns & Content</li>
     </ul>
-    <h4 class='offering-title order-8'>COMMUNICATIONS, MEIDA & MARKETING</h4>
-    <h4 class='offering-title order-9'>DEVELOPMENT</h4>
-    <ul class='offering-details order-10'>
+    <h4 class='offering-title'>COMMUNICATIONS, MEIDA & MARKETING</h4>
+    <h4 class='offering-title'>DEVELOPMENT</h4>
+    <ul class='offering-details'>
       <li>Squarespace Development</li>
       <li>Wordpress Development</li>
       <li>Custom Full-Stack Development</li>
     </ul>
+    <svg width='10' height='{h - offeringBottomMargin}'>
+      <path d='M0 0 V {h - offeringBottomMargin}'/>
+    </svg>
   </div>
 </section>
 
@@ -62,17 +66,19 @@
     margin: 0;
   }
 
-
   .what-we-do-offerings {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    max-width: 800px;
+    margin: auto;
+    justify-content: center;
   }
 
   .what-we-do-offerings h4, ul {
     box-sizing: border-box;
     flex: 50%;
-    margin-bottom: 90px;
+    margin-bottom: var(--bottom-margin);
   }
 
   .what-we-do-offerings h4:nth-child(odd), ul:nth-child(odd) {
@@ -92,43 +98,12 @@
     padding: 0;
   }
 
-  /* .order-1 {
-    order: 1;
+  svg {
+    position: absolute;
   }
 
-  .order-2 {
-    order: 2;
+  path {
+    stroke: var(--black);
+    stroke-width: 3px;
   }
-
-  .order-3 {
-    order: 3;
-  }
-
-  .order-4 {
-    order: 4;
-  }
-
-  .order-5 {
-    order: 5;
-  }
-
-  .order-6 {
-    order: 6;
-  }
-
-  .order-7 {
-    order: 7;
-  }
-
-  .order-8 {
-    order: 8;
-  }
-
-  .order-9 {
-    order: 9;
-  }
-
-  .order-10 {
-    order: 10;
-  } */
 </style>

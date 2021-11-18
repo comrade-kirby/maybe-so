@@ -45,7 +45,6 @@ body {
 	min-height: 100vh;
 	margin: 0;
 	color: var(--black);
-	background-color: hsla(0, 0%, 100%,);
 }
 
 #svelte {
