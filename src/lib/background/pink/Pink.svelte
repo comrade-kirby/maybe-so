@@ -15,7 +15,6 @@
 		height:100%;
 		width:100%;
     z-index: 0;
-		
 		background: radial-gradient(
       farthest-side at var(--pinkX) var(--pinkY),
       hsla(0, 100%, 85%, 0.5) 20%,

@@ -2,15 +2,10 @@
 	import Background from '$lib/background/Background.svelte';
 	import '../app.css';
 	import { updateGradients } from '$lib/helpers';
-
-	let h, w
 </script>
 
 
-<main 
-	on:mousemove={(e) => updateGradients(e, w, h)}
-	bind:clientWidth={w} 
-	bind:clientHeight={h} >
+<main on:mousemove={(e) => updateGradients(e)} >
 	<slot />
 </main>
 <Background />

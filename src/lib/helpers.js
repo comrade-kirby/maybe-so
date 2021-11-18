@@ -6,15 +6,17 @@ import {
   orangeGradient
 } from '$lib/stores'
 
-export const updateGradients = (event, width, height) => {
+export const updateGradients = (event) => {
+  const width = window.innerWidth
+  const height = window.innerHeight
   updatePink(event, width, height)
   updatePurple(event, width, height)
   updateOrange(event, width, height)
 }
 
 const updatePink = (event, width, height) => {
-  const pinkX = clamp(event.pageX / width * 100, 0, 100)
-  const pinkY = clamp(event.pageY / height * 100, 0, 100)
+  const pinkX = clamp(event.screenX / width * 100, 0, 100)
+  const pinkY = clamp(event.screenY / height * 100, 0, 100)
   
   pinkGradient.set([pinkX, pinkY])
 }
@@ -71,8 +73,8 @@ const convertPercentilesToCoords = (percentileArray, width, height) => {
 }
 
 const calculateDistanceSquared = (event, coords) => {
-  const xDistance = event.pageX - coords[0]
-  const yDistance = event.pageY - coords[1]
+  const xDistance = event.screenX - coords[0]
+  const yDistance = event.screenY - coords[1]
 
   const distanceSquared = xDistance ** 2 + yDistance ** 2
 
@@ -80,8 +82,8 @@ const calculateDistanceSquared = (event, coords) => {
 }
 
 const calculateSlope = (event, coords) => {
-  const dy = coords[1] - event.pageY
-  const dx = coords[0] - event.pageX
+  const dy = coords[1] - event.screenY
+  const dx = coords[0] - event.screenX
   const slope = dy / dx
 
   return slope
@@ -103,8 +105,8 @@ const calculatePointsAtDistance = (event, coords, distance) => {
   const dx = distance / r
   const dy = (distance * slope) / r
 
-  const pointA = [event.pageX + dx, event.pageY + dy]
-  const pointB = [event.pageX - dx, event.pageY - dy]
+  const pointA = [event.screenX + dx, event.screenY + dy]
+  const pointB = [event.screenX - dx, event.screenY - dy]
 
   return [pointA, pointB]
 }
