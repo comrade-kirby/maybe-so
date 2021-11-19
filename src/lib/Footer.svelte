@@ -42,4 +42,33 @@
     margin-top: 24px;
     text-align: right;
   }
+
+  @media screen and (max-width: 650px) {
+    footer {
+      padding: 60px 35px;
+      flex-direction: column;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .footer-left p {
+      font-size: 0.75rem;
+      line-height: 1rem;
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 40px;
+    }
+
+    .footer-right p {
+      text-align: left;
+    }
+  }
 </style>
