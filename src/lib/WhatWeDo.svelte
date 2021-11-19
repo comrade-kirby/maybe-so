@@ -6,8 +6,8 @@
 <section style='--bottom-margin: {offeringBottomMargin}px'>
   <h2>WHAT WE DO</h2>
   <div bind:clientHeight={h} >
-    <h4>BRAND STRATEGY</h4>
-    <ul>
+    <h4 class='order-1'>BRAND STRATEGY</h4>
+    <ul class='order-2'>
       <li>User Research</li>
       <li>Competitive Analysis</li>
       <li>Experience and Journey Mapping</li>
@@ -20,8 +20,8 @@
       <li>Block Design / Page Layout</li>
     </ul>
     <h4 class='order-3'>GRAPHIC DESIGN</h4>
-    <h4>WEB DESIGN</h4>
-    <ul>
+    <h4 class='order-5'>WEB DESIGN</h4>
+    <ul class='order-6'>
       <li>Information Architecture & Site Mapping</li>
       <li>UX Writing & Content Design</li>
       <li>Low Fidelity Wireframe Prototypes</li>
@@ -33,8 +33,8 @@
       <li>Social Media Campaigns & Content</li>
     </ul>
     <h4 class='order-7'>COMMUNICATIONS, MEIDA & MARKETING</h4>
-    <h4>DEVELOPMENT</h4>
-    <ul>
+    <h4 class='order-9'>DEVELOPMENT</h4>
+    <ul class='order-10'>
       <li>Squarespace Development</li>
       <li>Wordpress Development</li>
       <li>Custom Full-Stack Development</li>
@@ -139,6 +139,14 @@
       padding-left: 0;
     }
 
+    .order-1 {
+      order: 1;
+    }
+
+    .order-2 {
+      order: 2;
+    }
+
     .order-3 {
       order: 3;
     }
@@ -147,12 +155,28 @@
       order: 4;
     }
 
+    .order-5 {
+      order: 5;
+    }
+
+    .order-6 {
+      order: 6;
+    }
+
     .order-7 {
       order: 7;
     }
 
     .order-8 {
       order: 8;
+    }
+
+    .order-9 {
+      order: 9;
+    }
+    
+    .order-10 {
+      order: 10;
     }
   }
 </style>
