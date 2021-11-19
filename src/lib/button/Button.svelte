@@ -27,7 +27,6 @@
   @media screen and (max-width: 1000px) {
     button {
       font-size: 0.75rem;
-      /* align-self: unset; */
     }
   }
  

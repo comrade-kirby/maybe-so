@@ -13,6 +13,8 @@
 <style>
   section {
     padding: 200px 140px;
+    display: flex;
+    flex-direction: column;
   }
 
   span {
@@ -23,5 +25,11 @@
 
   p {
     margin: 35px 0 75px;
+  }
+
+  @media screen and (max-width: 650px) {
+    section {
+      padding: 200px 0;
+    }
   }
 </style>
