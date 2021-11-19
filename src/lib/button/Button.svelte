@@ -30,4 +30,12 @@
       /* align-self: unset; */
     }
   }
+ 
+  @media screen and (max-width: 650px) {
+    button {
+      padding: 18px 0;
+      border: 1px solid var(--black);
+      align-self: stretch
+    }
+  }
 </style>

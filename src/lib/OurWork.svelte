@@ -40,4 +40,21 @@
     flex-grow: 2;
   }
 
+  @media screen and (max-width: 650px) {
+
+    section {
+      padding: 100px 15px;
+    }
+
+    div {
+      flex-direction: column;
+      margin-top: -30px;
+    }
+
+    h4 {
+      width: unset;
+      margin: 80px 0 0 0;
+    }
+  }
+
 </style>
