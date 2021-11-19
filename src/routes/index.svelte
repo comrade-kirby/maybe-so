@@ -3,6 +3,7 @@
 </script>
 
 <script>
+import CanWeHelp from '$lib/CanWeHelp.svelte';
 import HowWeDoIt from '$lib/HowWeDoIt.svelte';
 import Intro from '$lib/Intro.svelte';
 import OurWork from '$lib/OurWork.svelte';
@@ -17,7 +18,5 @@ import WhatWeDo from '$lib/WhatWeDo.svelte';
 <OurWork />
 <WhatWeDo />
 <HowWeDoIt />
+<CanWeHelp />
 
-<style>
-
-</style>

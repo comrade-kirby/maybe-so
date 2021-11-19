@@ -2,7 +2,7 @@
 	import Button from '$lib/button/Button.svelte'
 </script>
 
-<section class='intro'>
+<section>
 	<h1>
 		<span>(MAYBE SO)</span> is a digital creative studio that builds unique and accessible brands and web experiences.
 	</h1>
@@ -10,10 +10,14 @@
 </section>
 
 <style>
-  .intro {
+  section {
 		box-sizing: border-box;
 		min-height: 95vh;
 		padding: 260px 0 200px;
+	}
+
+	h1 {
+		margin-bottom: 80px;
 	}
 
   span {

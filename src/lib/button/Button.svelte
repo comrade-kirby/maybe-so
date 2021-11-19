@@ -8,7 +8,7 @@
 
 <style>
   button {
-    margin-top: 80px;
+    /* margin-top: 80px; */
     padding: 24px 50px;
     font-size: 1.125rem;
     font-family: EditorialNew;

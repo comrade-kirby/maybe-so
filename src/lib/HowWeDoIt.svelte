@@ -2,9 +2,9 @@
 
 </script>
 
-<section class='how-we-do-it' >
+<section>
   <h2>HOW WE DO IT</h2>
-  <div class='how-we-do-it-explanations'>
+  <div class='explanations'>
     <div class='explanation'>
       <h5>WE'RE NEVER DONE LEARNING.</h5>
       <p>We’re experts, but every project is different, and technology is ever-changing. That means we approach each project as an opportunity to level-up. If you like our previous work, I bet you we can do better.</p>
@@ -30,7 +30,7 @@
     margin: 160px 20px 60px;
   }
 
-  .how-we-do-it-explanations {
+  .explanations {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
