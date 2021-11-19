@@ -99,4 +99,10 @@
     stroke: var(--black);
     stroke-width: 1px;
   }
+
+  @media screen and (max-width: 1000px) {
+    h2 {
+      margin: 160px 0 80px;
+    }
+  }
 </style>

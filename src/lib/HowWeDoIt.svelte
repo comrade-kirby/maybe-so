@@ -52,4 +52,10 @@
   h5 {
     margin-bottom: 32px;
   }
+
+  @media screen and (max-width: 1000px) {
+    .explanation {
+      padding: 30px;
+    }
+  }
 </style>

@@ -12,12 +12,13 @@
 
 <style>
   section {
-    padding: 200px 235px;
+    padding: 200px 140px;
   }
 
   span {
     font-family: EditorialNew;
 		font-weight: 200;
+    white-space: nowrap;
   }
 
   p {

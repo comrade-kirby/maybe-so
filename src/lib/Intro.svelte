@@ -11,9 +11,11 @@
 
 <style>
   section {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 		box-sizing: border-box;
 		min-height: 95vh;
-		padding: 260px 0 200px;
 	}
 
 	h1 {
@@ -23,5 +25,6 @@
   span {
 		font-family: EditorialNew;
 		font-weight: 200;
+    white-space: nowrap;
 	}
 </style>

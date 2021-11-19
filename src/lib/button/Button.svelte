@@ -8,7 +8,6 @@
 
 <style>
   button {
-    /* margin-top: 80px; */
     padding: 24px 50px;
     font-size: 1.125rem;
     font-family: EditorialNew;
@@ -17,10 +16,18 @@
     border-radius: 260px;
     border: 2px solid var(--black);
     transition: 0.2s ease-in;
+    align-self: flex-start;
 
   }
 
   button:hover {
     box-shadow: 2px 3px var(--black);
+  }
+
+  @media screen and (max-width: 1000px) {
+    button {
+      font-size: 0.75rem;
+      /* align-self: unset; */
+    }
   }
 </style>
