@@ -1,12 +1,24 @@
 <script>
+	import { onMount } from 'svelte';
 	import Background from '$lib/background/Background.svelte';
 	import Footer from '$lib/Footer.svelte';
 	import '../app.css';
-	import { updateGradients } from '$lib/helpers';
+	import { updateDesktopGradients, updateMobileGradients } from '$lib/helpers';
+
+	let isMobile = false
+	
+	onMount(() => {
+		if (/Mobi/.test(navigator.userAgent)) {
+			isMobile = true
+		}
+	})
+
 </script>
 
 
-<main on:mousemove={(e) => updateGradients(e)} >
+<main 
+	on:mousemove={(e) => updateDesktopGradients(e, isMobile)} 
+	on:deviceorientation={(e) => updateMobileGradients(e, isMobile)} >
 	<div>
 		<slot />
 	</div>

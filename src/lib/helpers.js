@@ -6,12 +6,36 @@ import {
   orangeGradient
 } from '$lib/stores'
 
-export const updateGradients = (event) => {
-  const width = window.innerWidth
-  const height = window.innerHeight
-  updatePink(event, width, height)
-  updatePurple(event, width, height)
-  updateOrange(event, width, height)
+export const updateDesktopGradients = (event, isMobile) => {
+  if (!isMobile) {
+    const width = window.innerWidth
+    const height = window.innerHeight
+    updatePink(event, width, height)
+    updatePurple(event, width, height)
+    updateOrange(event, width, height)
+  }
+}
+
+export const updateMobileGradients = (event, isMobile) => {
+  if (isMobile) {
+    const currentPink = get(pinkGradient)
+    const pxCoords = convertPercentilesToCoords(currentPink, width, height)
+
+    const tiltX = event.beta
+    const tiltY = event.gamma
+
+    if (tiltX > 0) { pxCoords[0] += 5 }
+    if (tiltX < 0) { pxCoords[0] -= 5 }
+    if (tiltY > 0) { pxCoords[1] += 5 }
+    if (tiltY < 0) { pxCoords[1] -= 5 }
+
+    const newPercentCoords = [
+      clamp(pxCoords[0], 0, 100),
+      clamp(pxCoords[1], 0, 100)
+    ]
+
+    pinkGradient.set(newPercentCoords)
+  }
 }
 
 const updatePink = (event, width, height) => {
