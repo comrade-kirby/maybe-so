@@ -15,10 +15,10 @@
 
 </script>
 
+<svelte:window 
+	on:DeviceOrientationEvent={(e) => updateMobileGradients(e, isMobile)} />
 
-<main 
-	on:mousemove={(e) => updateDesktopGradients(e, isMobile)} 
-	on:deviceorientation={(e) => updateMobileGradients(e, isMobile)} >
+<main on:mousemove={(e) => updateDesktopGradients(e, isMobile)} >
 	<div>
 		<slot />
 	</div>
