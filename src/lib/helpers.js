@@ -21,7 +21,7 @@ export const updateDesktopGradients = (event, isMobile) => {
 
 export const updateMobileGradients = (event, isMobile) => {
   orientation.set(true)
-  if (isMobile) {
+  // if (isMobile) {
     const width = window.innerWidth
     const height = window.innerHeight
     const currentPink = get(pinkGradient)
@@ -45,7 +45,7 @@ export const updateMobileGradients = (event, isMobile) => {
     ]
 
     pinkGradient.set(newPercentCoords)
-  }
+  // }
 }
 
 const updatePink = (event, width, height) => {
