@@ -17,7 +17,7 @@
 </script>
 
 <svelte:window 
-	on:deviceorientation={(e) => updateMobileGradients(e, isMobile)} 
+	on:devicemotion={(e) => updateMobileGradients(e, isMobile)} 
 	on:mousemove={(e) => updateDesktopGradients(e, isMobile)} />
 
 <main  >
