@@ -63,5 +63,11 @@
    	main {
 			padding: 0 35px;
     }
-}
+	}
+
+	@media screen and (max-width: 350px) {
+   	main {
+			padding: 0 12px;
+    }
+	}
 </style>

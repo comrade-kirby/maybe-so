@@ -8,8 +8,8 @@
 
 <style>
   button {
-    padding: 24px 50px;
-    font-size: 1.125rem;
+    padding: 16px 36px;
+    font-size: 1rem;
     font-family: EditorialNew;
     font-weight: 400;
     background-color: transparent;
@@ -32,7 +32,7 @@
  
   @media screen and (max-width: 650px) {
     button {
-      padding: 18px 0;
+      padding: 16px 0;
       border: 1px solid var(--black);
       align-self: stretch
     }
