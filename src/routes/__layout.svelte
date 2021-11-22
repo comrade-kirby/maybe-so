@@ -4,6 +4,7 @@
 	import Footer from '$lib/Footer.svelte';
 	import '../app.css';
 	import { updateDesktopGradients, updateMobileGradients } from '$lib/helpers';
+	import { orientationX, orientationY } from '$lib/stores.js';
 
 	let isMobile = false
 	
@@ -19,6 +20,7 @@
 	on:DeviceOrientationEvent={(e) => updateMobileGradients(e, isMobile)} />
 
 <main on:mousemove={(e) => updateDesktopGradients(e, isMobile)} >
+	<p>tiltX: {$orientationX} tiltY: {$orientationY}</p>
 	<div>
 		<slot />
 	</div>

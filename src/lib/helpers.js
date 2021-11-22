@@ -3,7 +3,9 @@ import { get } from 'svelte/store'
 import {
   purpleGradient,
   pinkGradient,
-  orangeGradient
+  orangeGradient,
+  orientationX,
+  orientationY
 } from '$lib/stores'
 
 export const updateDesktopGradients = (event, isMobile) => {
@@ -20,9 +22,12 @@ export const updateMobileGradients = (event, isMobile) => {
   if (isMobile) {
     const currentPink = get(pinkGradient)
     const pxCoords = convertPercentilesToCoords(currentPink, width, height)
-
+    console.log('mobile')
     const tiltX = event.beta
     const tiltY = event.gamma
+
+    orientationX.set(tiltX)
+    orientationY.set(tiltY)
 
     if (tiltX > 0) { pxCoords[0] += 5 }
     if (tiltX < 0) { pxCoords[0] -= 5 }
