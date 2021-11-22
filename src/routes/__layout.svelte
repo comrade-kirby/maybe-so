@@ -4,7 +4,7 @@
 	import Footer from '$lib/Footer.svelte';
 	import '../app.css';
 	import { updateDesktopGradients, updateMobileGradients } from '$lib/helpers';
-	import { orientationX, orientationY, orientation } from '$lib/stores.js';
+	import { orientationX, orientationY } from '$lib/stores.js';
 
 	let isMobile = false
 	
