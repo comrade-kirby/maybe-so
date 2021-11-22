@@ -3,9 +3,7 @@ import { get } from 'svelte/store'
 import {
   purpleGradient,
   pinkGradient,
-  orangeGradient,
-  orientationX,
-  orientationY
+  orangeGradient
 } from '$lib/stores'
 
 export const updateDesktopGradients = (event, isMobile) => {
@@ -41,13 +39,11 @@ const calculateTiltCoords = (event, width, height) => {
   
   const speedMultiplier = 2
   const uprightTiltAdjustment = 35
-  const adjustedTiltY = tiltY - uprightTiltAdjustment
 
-  orientationX.set(tiltX)
-  orientationY.set(adjustedTiltY)
+  tiltY -= uprightTiltAdjustment
 
   const newX = pxCoords[0] + tiltX * speedMultiplier
-  const newY = pxCoords[1] + adjustedTiltY * speedMultiplier
+  const newY = pxCoords[1] + tiltY * speedMultiplier
 
   return [newX, newY]
 }

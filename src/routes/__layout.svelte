@@ -4,12 +4,10 @@
 	import Footer from '$lib/Footer.svelte';
 	import '../app.css';
 	import { updateDesktopGradients, updateMobileGradients } from '$lib/helpers';
-	import { orientationX, orientationY } from '$lib/stores.js';
 
 	let isMobile = false
 	
 	const requestOrientationPermission = () => {
-			console.log("touchend")
 			if (typeof DeviceOrientationEvent['requestPermission'] === 'function') {
 				DeviceOrientationEvent.requestPermission()
 				.then(response => {
@@ -35,7 +33,6 @@
 	on:mousemove={(e) => updateDesktopGradients(e, isMobile)} />
 
 <main  >
-	<p>tiltX: {$orientationX} tiltY: {$orientationY}</p>
 	<div>
 		<slot />
 	</div>
