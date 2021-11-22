@@ -27,21 +27,21 @@ export const updateMobileGradients = (event, isMobile) => {
     console.log('mobile')
     const tiltX = event.beta
     const tiltY = event.gamma
-    console.log(event)
-    orientationX.set(tiltX)
-    orientationY.set(tiltY)
+    // console.log(event)
+    // orientationX.set(tiltX)
+    // orientationY.set(tiltY)
 
-    if (tiltX > 0) { pxCoords[0] += 5 }
-    if (tiltX < 0) { pxCoords[0] -= 5 }
-    if (tiltY > 0) { pxCoords[1] += 5 }
-    if (tiltY < 0) { pxCoords[1] -= 5 }
+    // if (tiltX > 0) { pxCoords[0] += 5 }
+    // if (tiltX < 0) { pxCoords[0] -= 5 }
+    // if (tiltY > 0) { pxCoords[1] += 5 }
+    // if (tiltY < 0) { pxCoords[1] -= 5 }
 
-    const newPercentCoords = [
-      clamp(pxCoords[0], 0, 100),
-      clamp(pxCoords[1], 0, 100)
-    ]
+    // const newPercentCoords = [
+    //   clamp(pxCoords[0], 0, 100),
+    //   clamp(pxCoords[1], 0, 100)
+    // ]
 
-    pinkGradient.set(newPercentCoords)
+    // pinkGradient.set(newPercentCoords)
   // }
 }
 
