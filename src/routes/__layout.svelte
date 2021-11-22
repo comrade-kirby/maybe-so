@@ -9,29 +9,30 @@
 	let isMobile = false
 	
 	const requestOrientationPermission = () => {
-		console.log("touchend")
-			DeviceOrientationEvent.requestPermission()
-			.then(response => {
-				if (response == 'granted') {
-					window.addEventListener('devicemotion', (e) => updateMobileGradients(e, isMobile))
-				}
-			})
-			.catch(console.error)
+			console.log("touchend")
+			if (typeof DeviceOrientationEvent['requestPermission'] === 'function') {
+				DeviceOrientationEvent.requestPermission()
+				.then(response => {
+					if (response == 'granted') {
+						window.addEventListener('devicemotion', (e) => updateMobileGradients(e, isMobile))
+					}
+				})
+				.catch(console.error)
+			} else {
+				window.addEventListener('devicemotion', (e) => updateMobileGradients(e, isMobile))
+			}
 	}
 
 	onMount(() => {
 		if (/Mobi/.test(navigator.userAgent)) {
 			isMobile = true
 		}
-
-	
 	})
 
 </script>
 
-<svelte:window 
-	on:mousemove={(e) => updateDesktopGradients(e, isMobile)} 
-	on:touchend|once={(e) => requestOrientationPermission} />
+<svelte:window on:touchend|once={(e) => requestOrientationPermission()} 
+	on:mousemove={(e) => updateDesktopGradients(e, isMobile)} />
 
 <main  >
 	<p>tiltX: {$orientationX} tiltY: {$orientationY}</p>
