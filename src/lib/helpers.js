@@ -56,7 +56,7 @@ const updatePink = (cursorCoords, width, height) => {
 }
 
 const updatePurple = (cursorCoords, width, height) => {
-  const minDistance = 500
+  const minDistance = Math.max(width, height) * 0.33
   const minPercent = 10
   const maxPercent = 90
 
@@ -77,7 +77,8 @@ const updatePurple = (cursorCoords, width, height) => {
 }
 
 const updateOrange = (cursorCoords, width, height) => {
-  const minDistance = 1000
+  const minDistance = Math.max(width, height) * 0.67
+
   const minPercent = 10
   const maxPercent = 90
 
