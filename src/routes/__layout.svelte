@@ -14,12 +14,12 @@
 				DeviceOrientationEvent.requestPermission()
 				.then(response => {
 					if (response == 'granted') {
-						window.addEventListener('devicemotion', (e) => updateMobileGradients(e, isMobile))
+						window.addEventListener('deviceorientation', (e) => updateMobileGradients(e, isMobile))
 					}
 				})
 				.catch(console.error)
 			} else {
-				window.addEventListener('devicemotion', (e) => updateMobileGradients(e, isMobile))
+				window.addEventListener('deviceorientation', (e) => updateMobileGradients(e, isMobile))
 			}
 	}
 
