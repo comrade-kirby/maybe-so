@@ -12,12 +12,25 @@
 		if (/Mobi/.test(navigator.userAgent)) {
 			isMobile = true
 		}
+
+		if (typeof DeviceMotionEvent.requestPermission === 'function') {
+			// iOS 13+
+			DeviceOrientationEvent.requestPermission()
+			.then(response => {
+				if (response == 'granted') {
+					window.addEventListener('deviceOrientation', (e) => updateMobileGradients(e, isMobile))
+				}
+			})
+			.catch(console.error)
+		} else {
+				window.addEventListener('deviceOrientation', (e) => updateMobileGradients(e, isMobile))
+		}
+		
 	})
 
 </script>
 
 <svelte:window 
-	on:devicemotion={(e) => updateMobileGradients(e, isMobile)} 
 	on:mousemove={(e) => updateDesktopGradients(e, isMobile)} />
 
 <main  >
