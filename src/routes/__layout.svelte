@@ -36,7 +36,6 @@
 
 <main  >
 	<p>tiltX: {$orientationX} tiltY: {$orientationY}</p>
-	<p>orientation: {$orientation} </p>
 	<div>
 		<slot />
 	</div>

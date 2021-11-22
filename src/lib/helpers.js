@@ -22,18 +22,10 @@ export const updateDesktopGradients = (event, isMobile) => {
 }
 
 export const updateMobileGradients = (event, isMobile) => {
-  orientation.set(true)
   const width = window.innerWidth
   const height = window.innerHeight
   
   const tiltCoords = calculateTiltCoords(event, width, height)
-
-  // const newPercentCoords = [
-  //   clamp(newX / width * 100, 0, 100),
-  //   clamp(newY / height * 100, 0, 100)
-  // ]
-
-  // pinkGradient.set(newPercentCoords)
 
   updatePink(tiltCoords, width, height)
   updatePurple(tiltCoords, width, height)
@@ -47,14 +39,16 @@ const calculateTiltCoords = (event, width, height) => {
   const tiltX = event.gamma
   const tiltY = event.beta
   
-  orientationX.set(tiltX)
-  orientationY.set(tiltY)
-
+  
   const speedMultiplier = 2
   const uprightTiltAdjustment = 25
+  const adjustedTiltY = tiltY - uprightTiltAdjustment
+
+  orientationX.set(tiltX)
+  orientationY.set(adjustedTiltY)
 
   const newX = pxCoords[0] + tiltX * speedMultiplier
-  const newY = pxCoords[1] + (tiltY - uprightTiltAdjustment) * speedMultiplier
+  const newY = pxCoords[1] + adjustedTiltY * speedMultiplier
 
   return [newX, newY]
 }
