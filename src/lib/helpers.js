@@ -15,7 +15,7 @@ export const updateDesktopGradients = (event, isMobile) => {
     updatePink(event, width, height)
     updatePurple(event, width, height)
     updateOrange(event, width, height)
-  }
+  // }
 }
 
 export const updateMobileGradients = (event, isMobile) => {
