@@ -21,27 +21,24 @@ export const updateDesktopGradients = (event, isMobile) => {
 
 export const updateMobileGradients = (event, isMobile) => {
   orientation.set(true)
-  // console.log(isMobile)
   // if (isMobile) {
     const width = window.innerWidth
     const height = window.innerHeight
     const currentPink = get(pinkGradient)
     const pxCoords = convertPercentilesToCoords(currentPink, width, height)
-    // console.log('mobile')
-    const tiltX = event.beta
-    const tiltY = event.gamma
-    // console.log(event)
+    
+    const tiltY = event.beta
+    const tiltX = event.gamma
+    
     orientationX.set(tiltX)
     orientationY.set(tiltY)
 
-    if (tiltX > 0) { pxCoords[1] += 5 }
-    if (tiltX < 0) { pxCoords[1] -= 5 }
-    if (tiltY > 0) { pxCoords[0] += 5 }
-    if (tiltY < 0) { pxCoords[0] -= 5 }
+    const newX = pxCoords[0] + tiltX
+    const newY = pxCoords[1] + tiltY
 
     const newPercentCoords = [
-      clamp(pxCoords[0], 0, 100),
-      clamp(pxCoords[1], 0, 100)
+      clamp(newX / width * 100, 0, 100),
+      clamp(newY / height * 100, 0, 100)
     ]
 
     pinkGradient.set(newPercentCoords)
