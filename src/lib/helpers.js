@@ -9,7 +9,7 @@ import {
 } from '$lib/stores'
 
 export const updateDesktopGradients = (event, isMobile) => {
-  if (!isMobile) {
+  // if (!isMobile) {
     const width = window.innerWidth
     const height = window.innerHeight
     updatePink(event, width, height)
