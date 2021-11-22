@@ -34,7 +34,7 @@ const calculateTiltCoords = (event, width, height) => {
   const pxCoords = convertPercentilesToCoords(currentPink, width, height)
   
   const tiltX = event.gamma
-  const tiltY = event.beta
+  let tiltY = event.beta
   
   
   const speedMultiplier = 2
