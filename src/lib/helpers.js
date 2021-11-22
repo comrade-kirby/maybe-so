@@ -10,18 +10,18 @@ import {
 } from '$lib/stores'
 
 export const updateDesktopGradients = (event, isMobile) => {
-  // if (!isMobile) {
+  if (!isMobile) {
     const width = window.innerWidth
     const height = window.innerHeight
     updatePink(event, width, height)
     updatePurple(event, width, height)
     updateOrange(event, width, height)
-  // }
+  }
 }
 
 export const updateMobileGradients = (event, isMobile) => {
   orientation.set(true)
-  // if (isMobile) {
+  if (isMobile) {
     const width = window.innerWidth
     const height = window.innerHeight
     const currentPink = get(pinkGradient)
@@ -34,7 +34,7 @@ export const updateMobileGradients = (event, isMobile) => {
     orientationY.set(tiltY)
 
     const speedMultiplier = 2
-    const uprightTiltAdjustment = 45
+    const uprightTiltAdjustment = 25
 
     const newX = pxCoords[0] + tiltX * speedMultiplier
     const newY = pxCoords[1] + (tiltY - uprightTiltAdjustment) * speedMultiplier
@@ -45,7 +45,7 @@ export const updateMobileGradients = (event, isMobile) => {
     ]
 
     pinkGradient.set(newPercentCoords)
-  // }
+  }
 }
 
 const updatePink = (event, width, height) => {

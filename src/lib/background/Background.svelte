@@ -13,8 +13,8 @@ import Orange from './orange/Orange.svelte';
 
 <div class='background' >
 	<Pink pinkGradient={$pinkGradient} />
-	<!-- <Purple purpleGradient={$purpleGradient} /> -->
-	<!-- <Orange orangeGradient={$orangeGradient} /> -->
+	<Purple purpleGradient={$purpleGradient} />
+	<Orange orangeGradient={$orangeGradient} />
 </div>
 
 <style>
