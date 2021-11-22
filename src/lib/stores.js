@@ -7,3 +7,4 @@ export const orangeGradient = tweened([75, 90], { duration: 1000 })
 
 export const orientationX = writable(0)
 export const orientationY = writable(0)
+export const orientation = writable(false)

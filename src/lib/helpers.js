@@ -5,7 +5,8 @@ import {
   pinkGradient,
   orangeGradient,
   orientationX,
-  orientationY
+  orientationY,
+  orientation
 } from '$lib/stores'
 
 export const updateDesktopGradients = (event, isMobile) => {
@@ -19,6 +20,8 @@ export const updateDesktopGradients = (event, isMobile) => {
 }
 
 export const updateMobileGradients = (event, isMobile) => {
+    orientation.set(true)
+    console.log(isMobile)
   // if (isMobile) {
     const width = window.innerWidth
     const height = window.innerHeight
@@ -27,14 +30,14 @@ export const updateMobileGradients = (event, isMobile) => {
     console.log('mobile')
     const tiltX = event.beta
     const tiltY = event.gamma
-    // console.log(event)
-    // orientationX.set(tiltX)
-    // orientationY.set(tiltY)
+    console.log(event)
+    orientationX.set(tiltX)
+    orientationY.set(tiltY)
 
-    // if (tiltX > 0) { pxCoords[0] += 5 }
-    // if (tiltX < 0) { pxCoords[0] -= 5 }
-    // if (tiltY > 0) { pxCoords[1] += 5 }
-    // if (tiltY < 0) { pxCoords[1] -= 5 }
+    // if (tiltX > 0) { pxCoords[1] += 5 }
+    // if (tiltX < 0) { pxCoords[1] -= 5 }
+    // if (tiltY > 0) { pxCoords[0] += 5 }
+    // if (tiltY < 0) { pxCoords[0] -= 5 }
 
     // const newPercentCoords = [
     //   clamp(pxCoords[0], 0, 100),

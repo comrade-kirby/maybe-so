@@ -4,7 +4,7 @@
 	import Footer from '$lib/Footer.svelte';
 	import '../app.css';
 	import { updateDesktopGradients, updateMobileGradients } from '$lib/helpers';
-	import { orientationX, orientationY } from '$lib/stores.js';
+	import { orientationX, orientationY, orientation } from '$lib/stores.js';
 
 	let isMobile = false
 	
@@ -22,6 +22,7 @@
 
 <main  >
 	<p>tiltX: {$orientationX} tiltY: {$orientationY}</p>
+	<p>orientation: {$orientation} </p>
 	<div>
 		<slot />
 	</div>
