@@ -11,51 +11,62 @@ import {
 
 export const updateDesktopGradients = (event, isMobile) => {
   if (!isMobile) {
+    const mouseCoords = [event.screenX, event.screenY]
     const width = window.innerWidth
     const height = window.innerHeight
-    updatePink(event, width, height)
-    updatePurple(event, width, height)
-    updateOrange(event, width, height)
+
+    updatePink(mouseCoords, width, height)
+    updatePurple(mouseCoords, width, height)
+    updateOrange(mouseCoords, width, height)
   }
 }
 
 export const updateMobileGradients = (event, isMobile) => {
   orientation.set(true)
-  // if (isMobile) {
-    const width = window.innerWidth
-    const height = window.innerHeight
-    const currentPink = get(pinkGradient)
-    const pxCoords = convertPercentilesToCoords(currentPink, width, height)
-    
-    const tiltX = event.gamma
-    const tiltY = event.beta
-    
-    orientationX.set(tiltX)
-    orientationY.set(tiltY)
+  const width = window.innerWidth
+  const height = window.innerHeight
+  
+  const tiltCoords = calculateTiltCoords(event, width, height)
 
-    const speedMultiplier = 2
-    const uprightTiltAdjustment = 25
+  // const newPercentCoords = [
+  //   clamp(newX / width * 100, 0, 100),
+  //   clamp(newY / height * 100, 0, 100)
+  // ]
 
-    const newX = pxCoords[0] + tiltX * speedMultiplier
-    const newY = pxCoords[1] + (tiltY - uprightTiltAdjustment) * speedMultiplier
+  // pinkGradient.set(newPercentCoords)
 
-    const newPercentCoords = [
-      clamp(newX / width * 100, 0, 100),
-      clamp(newY / height * 100, 0, 100)
-    ]
-
-    pinkGradient.set(newPercentCoords)
-  // }
+  updatePink(tiltCoords, width, height)
+  updatePurple(tiltCoords, width, height)
+  updateOrange(tiltCoords, width, height)
 }
 
-const updatePink = (event, width, height) => {
-  const pinkX = clamp(event.screenX / width * 100, 0, 100)
-  const pinkY = clamp(event.screenY / height * 100, 0, 100)
+const calculateTiltCoords = (event, width, height) => {
+  const currentPink = get(pinkGradient)
+  const pxCoords = convertPercentilesToCoords(currentPink, width, height)
+  
+  const tiltX = event.gamma
+  const tiltY = event.beta
+  
+  orientationX.set(tiltX)
+  orientationY.set(tiltY)
+
+  const speedMultiplier = 2
+  const uprightTiltAdjustment = 25
+
+  const newX = pxCoords[0] + tiltX * speedMultiplier
+  const newY = pxCoords[1] + (tiltY - uprightTiltAdjustment) * speedMultiplier
+
+  return [newX, newY]
+}
+
+const updatePink = (cursorCoords, width, height) => {
+  const pinkX = clamp(cursorCoords[0] / width * 100, 0, 100)
+  const pinkY = clamp(cursorCoords[1] / height * 100, 0, 100)
   
   pinkGradient.set([pinkX, pinkY])
 }
 
-const updatePurple = (event, width, height) => {
+const updatePurple = (cursorCoords, width, height) => {
   const minDistance = 500
   const minPercent = 10
   const maxPercent = 90
@@ -65,10 +76,10 @@ const updatePurple = (event, width, height) => {
 
   const minDistanceSquared = minDistance ** 2
   
-  const distanceSquared = calculateDistanceSquared(event, pxCoords)
+  const distanceSquared = calculateDistanceSquared(cursorCoords, pxCoords)
 
   if (distanceSquared < minDistanceSquared) {
-    const newCoords = calcNewCoords(event, pxCoords, minDistance) 
+    const newCoords = calcNewCoords(cursorCoords, pxCoords, minDistance) 
     const newPercentCoords = calculatePercentile(newCoords, width, height)
     const clampedPercentCoords = clampPoint(newPercentCoords, minPercent, maxPercent)
 
@@ -76,7 +87,7 @@ const updatePurple = (event, width, height) => {
   }
 }
 
-const updateOrange = (event, width, height) => {
+const updateOrange = (cursorCoords, width, height) => {
   const minDistance = 1000
   const minPercent = 10
   const maxPercent = 90
@@ -86,10 +97,10 @@ const updateOrange = (event, width, height) => {
 
   const minDistanceSquared = minDistance ** 2
   
-  const distanceSquared = calculateDistanceSquared(event, pxCoords)
+  const distanceSquared = calculateDistanceSquared(cursorCoords, pxCoords)
 
   if (distanceSquared < minDistanceSquared) {
-    const newCoords = calcNewCoords(event, pxCoords, minDistance) 
+    const newCoords = calcNewCoords(cursorCoords, pxCoords, minDistance) 
     const newPercentCoords = calculatePercentile(newCoords, width, height)
     const clampedPercentCoords = clampPoint(newPercentCoords, minPercent, maxPercent)
 
@@ -106,41 +117,41 @@ const convertPercentilesToCoords = (percentileArray, width, height) => {
   return coords
 }
 
-const calculateDistanceSquared = (event, coords) => {
-  const xDistance = event.screenX - coords[0]
-  const yDistance = event.screenY - coords[1]
+const calculateDistanceSquared = (cursorCoords, coords) => {
+  const xDistance = cursorCoords[0] - coords[0]
+  const yDistance = cursorCoords[1] - coords[1]
 
   const distanceSquared = xDistance ** 2 + yDistance ** 2
 
   return distanceSquared
 }
 
-const calculateSlope = (event, coords) => {
-  const dy = coords[1] - event.screenY
-  const dx = coords[0] - event.screenX
+const calculateSlope = (cursorCoords, coords) => {
+  const dy = coords[1] - cursorCoords[1]
+  const dx = coords[0] - cursorCoords[0]
   const slope = dy / dx
 
   return slope
 }
 
-const calcNewCoords = (event, pxCoords, distance) => {
-  const potentialPointsAtDistance = calculatePointsAtDistance(event, pxCoords, distance)
+const calcNewCoords = (cursorCoords, pxCoords, distance) => {
+  const potentialPointsAtDistance = calculatePointsAtDistance(cursorCoords, pxCoords, distance)
 
   const bestNewCoords = calculateBestPoint(pxCoords, potentialPointsAtDistance)
 
   return bestNewCoords
 }
 
-const calculatePointsAtDistance = (event, coords, distance) => {
-  const slope = calculateSlope(event, coords)
+const calculatePointsAtDistance = (cursorCoords, coords, distance) => {
+  const slope = calculateSlope(cursorCoords, coords)
 
   const slopeSquared = slope ** 2
   const r = (1 + slopeSquared) ** 0.5
   const dx = distance / r
   const dy = (distance * slope) / r
 
-  const pointA = [event.screenX + dx, event.screenY + dy]
-  const pointB = [event.screenX - dx, event.screenY - dy]
+  const pointA = [cursorCoords[0] + dx, cursorCoords[1] + dy]
+  const pointB = [cursorCoords[0] - dx, cursorCoords[1] - dy]
 
   return [pointA, pointB]
 }
