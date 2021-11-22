@@ -27,14 +27,17 @@ export const updateMobileGradients = (event, isMobile) => {
     const currentPink = get(pinkGradient)
     const pxCoords = convertPercentilesToCoords(currentPink, width, height)
     
-    const tiltY = event.beta
     const tiltX = event.gamma
+    const tiltY = event.beta
     
     orientationX.set(tiltX)
     orientationY.set(tiltY)
 
-    const newX = pxCoords[0] + tiltX
-    const newY = pxCoords[1] + tiltY
+    const speedMultiplier = 2
+    const uprightTiltAdjustment = 45
+
+    const newX = pxCoords[0] + tiltX * speedMultiplier
+    const newY = pxCoords[1] + (tiltY - uprightTiltAdjustment) * speedMultiplier
 
     const newPercentCoords = [
       clamp(newX / width * 100, 0, 100),
