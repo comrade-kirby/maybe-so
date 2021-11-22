@@ -20,32 +20,32 @@ export const updateDesktopGradients = (event, isMobile) => {
 }
 
 export const updateMobileGradients = (event, isMobile) => {
-    orientation.set(true)
-    console.log(isMobile)
-  // if (isMobile) {
-    // const width = window.innerWidth
-    // const height = window.innerHeight
-    // const currentPink = get(pinkGradient)
-    // const pxCoords = convertPercentilesToCoords(currentPink, width, height)
+  orientation.set(true)
+  // console.log(isMobile)
+  if (isMobile) {
+    const width = window.innerWidth
+    const height = window.innerHeight
+    const currentPink = get(pinkGradient)
+    const pxCoords = convertPercentilesToCoords(currentPink, width, height)
     // console.log('mobile')
-    // const tiltX = event.beta
-    // const tiltY = event.gamma
+    const tiltX = event.beta
+    const tiltY = event.gamma
     // console.log(event)
-    // orientationX.set(tiltX)
-    // orientationY.set(tiltY)
+    orientationX.set(tiltX)
+    orientationY.set(tiltY)
 
-    // if (tiltX > 0) { pxCoords[1] += 5 }
-    // if (tiltX < 0) { pxCoords[1] -= 5 }
-    // if (tiltY > 0) { pxCoords[0] += 5 }
-    // if (tiltY < 0) { pxCoords[0] -= 5 }
+    if (tiltX > 0) { pxCoords[1] += 5 }
+    if (tiltX < 0) { pxCoords[1] -= 5 }
+    if (tiltY > 0) { pxCoords[0] += 5 }
+    if (tiltY < 0) { pxCoords[0] -= 5 }
 
-    // const newPercentCoords = [
-    //   clamp(pxCoords[0], 0, 100),
-    //   clamp(pxCoords[1], 0, 100)
-    // ]
+    const newPercentCoords = [
+      clamp(pxCoords[0], 0, 100),
+      clamp(pxCoords[1], 0, 100)
+    ]
 
-    // pinkGradient.set(newPercentCoords)
-  // }
+    pinkGradient.set(newPercentCoords)
+  }
 }
 
 const updatePink = (event, width, height) => {
