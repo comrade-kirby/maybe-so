@@ -20,12 +20,14 @@ export const updateDesktopGradients = (event, isMobile) => {
 
 export const updateMobileGradients = (event, isMobile) => {
   // if (isMobile) {
+    const width = window.innerWidth
+    const height = window.innerHeight
     const currentPink = get(pinkGradient)
     const pxCoords = convertPercentilesToCoords(currentPink, width, height)
     console.log('mobile')
     const tiltX = event.beta
     const tiltY = event.gamma
-
+    console.log(event)
     orientationX.set(tiltX)
     orientationY.set(tiltY)
 
