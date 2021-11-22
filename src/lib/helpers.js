@@ -40,7 +40,7 @@ const calculateTiltCoords = (event, width, height) => {
   
   
   const speedMultiplier = 2
-  const uprightTiltAdjustment = 25
+  const uprightTiltAdjustment = 35
   const adjustedTiltY = tiltY - uprightTiltAdjustment
 
   orientationX.set(tiltX)
