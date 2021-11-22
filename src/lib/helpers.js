@@ -5,8 +5,7 @@ import {
   pinkGradient,
   orangeGradient,
   orientationX,
-  orientationY,
-  orientation
+  orientationY
 } from '$lib/stores'
 
 export const updateDesktopGradients = (event, isMobile) => {
