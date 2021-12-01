@@ -26,11 +26,11 @@
     font-family: EditorialNew;
     font-size: 2.5rem;
     margin-bottom: 60px;
-    color: white;
+    color: var(--white);
   }
 
   p {
-    color: white;
+    color: var(--white);
     font-size: 1rem;
   }
 

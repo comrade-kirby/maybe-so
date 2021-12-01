@@ -37,8 +37,11 @@
 
 :root {
 	--black: #262626;
+	--white: hsl(47, 100%, 99%);
+	--yellow-white: hsl(47, 100%, 94%);
 	--transparent-white: hsla(0, 0%, 100%, 0.2);
 	font-family: EditorialNew;
+	background-color: var(--black);
 }
 
 body {

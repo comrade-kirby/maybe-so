@@ -6,8 +6,7 @@ import {
   orangeGradient
 } from '$lib/stores'
 
-export const updateDesktopGradients = (event, isMobile) => {
-  if (!isMobile) {
+export const updateDesktopGradients = (event) => {
     const mouseCoords = [event.screenX, event.screenY]
     const width = window.innerWidth
     const height = window.innerHeight
@@ -15,10 +14,9 @@ export const updateDesktopGradients = (event, isMobile) => {
     updatePink(mouseCoords, width, height)
     updatePurple(mouseCoords, width, height)
     updateOrange(mouseCoords, width, height)
-  }
 }
 
-export const updateMobileGradients = (event, isMobile) => {
+export const updateMobileGradients = (event) => {
   const width = window.innerWidth
   const height = window.innerHeight
   
