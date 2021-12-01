@@ -1,38 +1,30 @@
 <script>
-	import { onMount } from 'svelte';
 	import Background from '$lib/background/Background.svelte';
 	import Footer from '$lib/Footer.svelte';
+	import ContactModal from '$lib/contactModal/ContactModal.svelte';
 	import '../app.css';
 	import { updateDesktopGradients, updateMobileGradients } from '$lib/helpers';
 
-	let isMobile = false
-	
 	const requestOrientationPermission = () => {
 			if (typeof DeviceOrientationEvent['requestPermission'] === 'function') {
 				DeviceOrientationEvent.requestPermission()
 				.then(response => {
 					if (response == 'granted') {
-						window.addEventListener('deviceorientation', (e) => updateMobileGradients(e, isMobile))
+						window.addEventListener('deviceorientation', (e) => updateMobileGradients(e))
 					}
 				})
 				.catch(console.error)
 			} else {
-				window.addEventListener('deviceorientation', (e) => updateMobileGradients(e, isMobile))
+				window.addEventListener('deviceorientation', (e) => updateMobileGradients(e))
 			}
 	}
-
-	onMount(() => {
-		if (/Mobi/.test(navigator.userAgent)) {
-			isMobile = true
-		}
-	})
-
 </script>
 
 <svelte:window on:touchend|once={(e) => requestOrientationPermission()} 
-	on:mousemove={(e) => updateDesktopGradients(e, isMobile)} />
+	on:mousemove={(e) => updateDesktopGradients(e)} />
 
 <main  >
+	<ContactModal />
 	<div>
 		<slot />
 	</div>

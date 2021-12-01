@@ -1,8 +1,9 @@
 <script>
   export let text
+  export let handleClick
 </script>
 
-<button>
+<button on:click={handleClick}>
   {text}
 </button>
 

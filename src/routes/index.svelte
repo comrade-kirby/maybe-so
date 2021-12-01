@@ -1,13 +1,13 @@
 <script context="module">
-	export const prerender = true;
+	export const prerender = true
 </script>
 
 <script>
-import CanWeHelp from '$lib/CanWeHelp.svelte';
-import HowWeDoIt from '$lib/HowWeDoIt.svelte';
-import Intro from '$lib/Intro.svelte';
-import OurWork from '$lib/OurWork.svelte';
-import WhatWeDo from '$lib/WhatWeDo.svelte';
+	import CanWeHelp from '$lib/CanWeHelp.svelte'
+	import HowWeDoIt from '$lib/HowWeDoIt.svelte'
+	import Intro from '$lib/Intro.svelte'
+	import OurWork from '$lib/OurWork.svelte'
+	import WhatWeDo from '$lib/WhatWeDo.svelte'
 </script>
 
 <svelte:head>

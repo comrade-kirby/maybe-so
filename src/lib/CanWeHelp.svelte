@@ -1,5 +1,8 @@
 <script>
   import Button from '$lib/button/Button.svelte'
+  import { contactModalOpen } from './stores';
+  
+  const openContactModal = () => contactModalOpen.set(true)
 </script>
 
 <section>
@@ -7,7 +10,7 @@
 		Can we help you with something? <span>(MAYBE SO)</span>
 	</h1>
   <p>Think we might be a good fit? Reach out and say hi! Make sure to let us know a bit about yourself, your project, and any timeline or budget you may have in mind. </p>
-	<Button text='LET’S MAKE SOMETHING TOGETHER' />
+	<Button text='LET’S MAKE SOMETHING TOGETHER' handleClick={openContactModal} />
 </section>
 
 <style>
