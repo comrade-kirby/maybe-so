@@ -18,5 +18,8 @@
     "prettier-plugin-svelte": "^2.4.0",
     "svelte": "^3.34.0"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "p5": "^1.4.0"
+  }
 }
