@@ -1,5 +1,5 @@
-const primaryOpacity = 40
-const hoverOpacity = 60
+const primaryOpacity = 0
+const hoverOpacity = 10
 
 export const transparentText = (p5, options) => {
   const { 
@@ -7,8 +7,8 @@ export const transparentText = (p5, options) => {
     textSize,
     textLeading,
     bold,
-    horizontalAlignment,
-    verticalAlignment,
+    // horizontalAlignment,
+    // verticalAlignment,
     xPosition,
     yPosition,
     width,
@@ -22,14 +22,16 @@ export const transparentText = (p5, options) => {
 
   erase = progress ? erase * progress : erase
   opacity = progress ? opacity * progress : opacity
-  p5.textStyle(bold ? p5.BOLD: p5.NORMAL)
+  p5.textStyle(p5.NORMAL)
   p5.textSize(textSize)
   p5.textLeading(textLeading)
-  p5.textAlign(horizontalAlignment, verticalAlignment)
+  p5.textAlign(p5.LEFT, p5.TOP)
+  
   p5.fill(0)
   p5.noStroke()
   
   p5.erase(erase)
+  p5.textWrap(p5.WORD)
   p5.text(text, xPosition, yPosition, width, height)
   p5.noErase()
   
@@ -37,23 +39,8 @@ export const transparentText = (p5, options) => {
   p5.text(text, xPosition, yPosition, width, height)
 }
 
-export const transparentTitle = (p5, text, screenSize) => {
-  const size = screenSize == 'large' ? 20 : 11
-  const margin = screenSize == 'large' ? 40 : 20
-
-  transparentText(p5, {
-    text: text,
-    textSize: size,
-    bold: true,
-    horizontalAlignment: p5.LEFT,
-    verticalAlignment: p5.TOP,
-    xPosition: margin,
-    yPosition: margin,
-  })
-}
-
 export const drawContainer = (p5, width, height, xPosition = 0) => { 
-  p5.fill(0, 0, 100, 90)
+  p5.fill(0, 0, 15)
   p5.noStroke()
   p5.rect(xPosition, 0, width, height)
 }
@@ -62,7 +49,7 @@ export const setupCanvas = (p5, width, height, parentId) => {
   const canvas = p5.createCanvas(width, height)
   canvas.parent(parentId)
   p5.colorMode(p5.HSL, 360, 100, 100, 100)
-  p5.textFont('Major Mono Display')
+  p5.textFont('Sneak')
 }
 
 export const getOpacity = (hover) => hover ? hoverOpacity : primaryOpacity
@@ -84,60 +71,44 @@ export const transparentShape = (p5, shapeCallback, options) => {
   shapeCallback()
 }
 
-export const drawLabel = (p5, text, x, y, hover, screenSize) => {
-  const textSize = screenSize == 'small' ? 10 : 14
+export const drawLabel = (p5, inputId, value) => {
+  
+  const xOffset = 0
+  const yOffset = 5
+
+  const el = document.getElementById(inputId)
+  const elRect = el.getBoundingClientRect()
+  const elStyle = window.getComputedStyle(el, null)
+  const elFontSize = Number(elStyle.getPropertyValue('font-size').slice(0, -2))
+
   transparentText(p5, {
-    text: text,
-    textSize,
-    verticalAlignment: p5.CENTER,
-    horizontalAlignment: p5.CENTER,
-    xPosition: x,
-    yPosition: y,
-    hover
+    text: value || inputId.toUpperCase(),
+    xPosition: elRect.x + xOffset,
+    yPosition: elRect.y + yOffset,
+    width: elRect.width,
+    height: elRect.height,
+    textSize: elFontSize
   })
-}
 
-export const drawDivider = (p5, x, y, hover) => {
-  const opacity = getOpacity(hover)
-
-  p5.strokeWeight(2)
-  const divider = () => {
-    p5.line(x, y, x + 60, y)
+  const border = () => {
+    p5.line(elRect.left, elRect.bottom, elRect.right, elRect.bottom)
   }
-  const options = { stroke: true, opacity }
-  transparentShape(p5, divider, options)
+
+  transparentShape(p5, border, {stroke: true, fill: true, opacity: 0})
+ 
 }
 
-export const drawXIcon = (p5, x, y, hover, screenSize, progress=1,) => {
-  const opacity = getOpacity(hover) * progress
-  const length = screenSize == 'small' ? 7 : 10
+export const drawXIcon = (p5, buttonId, hover, progress=1) => {
+  const el = document.getElementById(buttonId)
+  const elRect = el.getBoundingClientRect()
+  // const opacity = getOpacity(hover) * progress
+  // const length = screenSize == 'small' ? 7 : 10
   p5.strokeWeight(2)
   const xIcon = () => {
-    p5.line(x - length, y - length, x + length, y + length)
-    p5.line(x - length, y + length, x + length, y - length)
+    p5.line(elRect.left, elRect.top, elRect.right, elRect.bottom)
+    p5.line(elRect.left, elRect.bottom, elRect.right, elRect.top)
   }
 
-  const options = { stroke: true, opacity }
+  const options = { stroke: true, opacity: 0 }
   transparentShape(p5, xIcon, options)
-}
-
-export const logStiffness = (value) => {
-  const stiffnessMinPower = - 6
-  return 10 ** ((1 - value) * stiffnessMinPower)
-}
-
-export const logDamping = (value) => {
-  const dampingMinPower = - 4
-  return 10 ** ((1 - value) * dampingMinPower)
-}
-
-export const closeButtonMargin = (screenSize) => {
-  return screenSize == 'large' ? 50 : 30
-}
-
-export const openControlButtons = (controlButtons) => {
-  controlButtons.forEach((button, index) => {
-    const delay = (controlButtons.length - index) * 100
-    button.set(1, { delay })
-  })
 }

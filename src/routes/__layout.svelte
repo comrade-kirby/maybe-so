@@ -2,6 +2,7 @@
 	import Background from '$lib/background/Background.svelte';
 	import Footer from '$lib/Footer.svelte';
 	import ContactModal from '$lib/contactModal/ContactModal.svelte';
+	import { contactModalOpen } from '$lib/stores';
 	import '../app.css';
 	import { updateDesktopGradients, updateMobileGradients } from '$lib/helpers';
 
@@ -25,9 +26,11 @@
 
 <main  >
 	<ContactModal />
+	{#if !$contactModalOpen}}
 	<div>
 		<slot />
 	</div>
+	{/if}
 </main>
 <Footer />
 <Background />
