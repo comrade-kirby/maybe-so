@@ -59,8 +59,8 @@
 </script>
 
 {#if $contactModalOpen}
-  <div class='contact-modal' bind:clientHeight={h} bind:clientWidth={w}>
-    <div id='p5-contact'></div>
+  <div id='p5-contact' bind:clientHeight={h} bind:clientWidth={w}>
+    <!-- <div id='p5-contact'></div> -->
     <button id='close-button' on:click={closeContactModal}>close</button>
     <div class='contact-form'>
       <form action="https://formspree.io/mqkyvzdr" method="POST">
@@ -96,24 +96,24 @@
 
 
 <style>
-  .contact-modal {
+  #p5-contact {
     /* position: fixed; */
     position: absolute;
-    top: 0;
+    /* top: 0; */
     height: 100%;
     width: 100%;
-    color: white;
+    /* color: white; */
     display: flex;
-    overflow: scroll;
-    align-items: center;
+    /* overflow: scroll; */
+    /* align-items: center; */
     z-index: 2;
   }
 
-  #p5-contact {
+  /* #p5-contact {
     position: absolute;
     top: 0;
     left: 0;
-  }
+  } */
 
   #close-button {
     position: absolute;
