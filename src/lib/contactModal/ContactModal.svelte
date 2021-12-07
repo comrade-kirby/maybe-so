@@ -37,7 +37,6 @@
     }
 
     p5.windowResized = () => {
-      console.log('resize')
       p5.resizeCanvas(w, h)
       p5.redraw()
     }
@@ -62,50 +61,47 @@
   <div id='p5-contact' bind:clientHeight={h} bind:clientWidth={w}>
     <!-- <div id='p5-contact'></div> -->
     <button id='close-button' on:click={closeContactModal}>close</button>
-    <div class='contact-form'>
-      <form action="https://formspree.io/mqkyvzdr" method="POST">
-          <input 
-            type='text'
-            name='name'
-            id='name'
-            class:filled={nameValue}
-            required
-            bind:value={nameValue} >
-          <label for='name' id='name-label'>NAME</label>
-          <input 
-            type='email'
-            name='email'
-            id='email'
-            class:filled={emailValue}
-            required
-            bind:value={emailValue} >
-          <label for='email' id='email-label'>EMAIL</label>
-          <textarea 
-            name='introduction'
-            id='introduction'
-            class:filled={introductionValue}
-            required
-            bind:value={introductionValue} />
-          <label for='introduction' id='intro-label'>INTRODUCTION</label>
-        <button type="submit">SUBMIT</button>
-      </form>
-    </div>
-    <P5Canvas sketch={sketch} />
+    <!-- <div class='contact-form'> -->
+    <form action="https://formspree.io/mqkyvzdr" method="POST">
+        <input 
+          type='text'
+          name='name'
+          id='name'
+          class:filled={nameValue}
+          required
+          bind:value={nameValue} >
+        <label for='name' id='name-label'>NAME</label>
+        <input 
+          type='email'
+          name='email'
+          id='email'
+          class:filled={emailValue}
+          required
+          bind:value={emailValue} >
+        <label for='email' id='email-label'>EMAIL</label>
+        <textarea 
+          name='introduction'
+          id='introduction'
+          class:filled={introductionValue}
+          required
+          bind:value={introductionValue} />
+        <label for='introduction' id='intro-label'>INTRODUCTION</label>
+      <button type="submit">SUBMIT</button>
+    </form>
+    <!-- </div> -->
   </div>
+  <P5Canvas sketch={sketch} />
 {/if}
 
 
 <style>
   #p5-contact {
-    /* position: fixed; */
     position: absolute;
-    /* top: 0; */
     height: 100%;
     width: 100%;
-    /* color: white; */
     display: flex;
-    /* overflow: scroll; */
-    /* align-items: center; */
+    justify-content: center;
+    align-items: center;
     z-index: 2;
   }
 
@@ -128,7 +124,7 @@
     color: transparent;
   }
 
-  .contact-form {
+  /* .contact-form {
     position: absolute;
     top: 0;
     left: 0;
@@ -139,12 +135,13 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-  }
+  } */
 
   form {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    position: absolute;
     width: 100%;
     padding: 20px;
     max-width: 650px;
