@@ -49,6 +49,7 @@
 		padding: 0 90px;	
 		box-sizing: border-box;
 		z-index: 1;
+		position: relative;
 	}
 
 	div {
