@@ -37,7 +37,8 @@
     }
 
     p5.windowResized = () => {
-      p5.resizeCanvas(contactWidth, contactHeight)
+      console.log('resize')
+      p5.resizeCanvas(w, h)
       p5.redraw()
     }
 
