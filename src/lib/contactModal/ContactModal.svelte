@@ -4,10 +4,10 @@
   import {
     drawContainer,
     drawXIcon,
+    drawLabel,
     setupCanvas,
-    drawLabel
+    drawInput
   } from '$lib/p5Helpers.js'
-import { debug } from 'svelte/internal';
 
   let nameValue, emailValue, introductionValue, h, w
   let closeButtonHover = false
@@ -27,7 +27,8 @@ import { debug } from 'svelte/internal';
       drawContainer(p5, w, h)
       drawXIcon(p5, 'close-button', closeButtonHover)
       if (!messageSent) {
-        drawInputs(p5)
+        drawInputs()
+        drawLabels()
         // drawSubmitButton(p5)
       } else {
         // drawThankyou(p5)
@@ -40,12 +41,18 @@ import { debug } from 'svelte/internal';
       p5.redraw()
     }
 
-    const drawInputs = p5 => {
+    const drawInputs = () => {
       // p5.textAlign(p5.RIGHT, p5.CENTER)
       
-      drawLabel(p5, 'name', nameValue)
-      drawLabel(p5, 'email', emailValue)
-      drawLabel(p5, 'introduction', introductionValue)
+      drawInput(p5, 'name', nameValue)
+      drawInput(p5, 'email', emailValue)
+      drawInput(p5, 'introduction', introductionValue)
+    }
+
+    const drawLabels = () => {
+      drawLabel(p5, 'name-label')
+      drawLabel(p5, 'email-label')
+      drawLabel(p5, 'intro-label')
     }
   }
 </script>
@@ -60,25 +67,25 @@ import { debug } from 'svelte/internal';
             type='text'
             name='name'
             id='name'
+            class:filled={nameValue}
             required
-            bind:value={nameValue}
-            placeholder='NAME' >
-          <label for='name'>NAME</label>
+            bind:value={nameValue} >
+          <label for='name' id='name-label'>NAME</label>
           <input 
             type='email'
             name='email'
             id='email'
+            class:filled={emailValue}
             required
-            bind:value={emailValue}
-            placeholder='EMAIL'>
-          <label for='email'>EMAIL</label>
+            bind:value={emailValue} >
+          <label for='email' id='email-label'>EMAIL</label>
           <textarea 
             name='introduction'
             id='introduction'
+            class:filled={introductionValue}
             required
-            bind:value={introductionValue}
-            placeholder='INTRODUCTION' />
-          <label for='introduction'>INTRODUCTION</label>
+            bind:value={introductionValue} />
+          <label for='introduction' id='intro-label'>INTRODUCTION</label>
         <button type="submit">SUBMIT</button>
       </form>
     </div>
@@ -131,19 +138,21 @@ import { debug } from 'svelte/internal';
     padding: 300px;
     box-sizing: border-box;
   }
+
   form {
     display: flex;
     flex-direction: column;
   }
 
   input, textarea {
+    margin-top: 10px;
     background-color: transparent;
     border: none;
-    font-family: Sneak;
-    font-size: 1.5rem;
+    font-family: EditorialNew;
+    font-size: 1.25rem;
     color: transparent;
     caret-color : lightpink;
-    margin-bottom: 20px;
+    border-bottom: 4px transparent;
   }
 
   textarea {
@@ -151,10 +160,23 @@ import { debug } from 'svelte/internal';
   }
 
   label {
-    color: transparent;
+    margin-top: 10px;
+    position: relative;
+    transition: 0.2s ease-in-out;
+    opacity: 0;
+    align-self: flex-end;
+    top: -30px;
   }
 
-  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: transparent;
+  :focus {
+    outline: none;
+    background-color: hsla(0, 100%, 90%, 0.1);
   }
+
+  :focus + label, .filled + label {
+    top: 0;
+  }
+
+  
+ 
 </style>

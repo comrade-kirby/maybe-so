@@ -26,7 +26,7 @@
 
 <main  >
 	<ContactModal />
-	{#if !$contactModalOpen}}
+	{#if !$contactModalOpen}
 	<div>
 		<slot />
 	</div>

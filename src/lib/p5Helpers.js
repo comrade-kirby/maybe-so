@@ -71,9 +71,8 @@ export const transparentShape = (p5, shapeCallback, options) => {
   shapeCallback()
 }
 
-export const drawLabel = (p5, inputId, value) => {
-  
-  const xOffset = 0
+export const drawInput = (p5, inputId, value) => {
+  p5.textFont('Sneak')
   const yOffset = 5
 
   const el = document.getElementById(inputId)
@@ -82,8 +81,8 @@ export const drawLabel = (p5, inputId, value) => {
   const elFontSize = Number(elStyle.getPropertyValue('font-size').slice(0, -2))
 
   transparentText(p5, {
-    text: value || inputId.toUpperCase(),
-    xPosition: elRect.x + xOffset,
+    text: value,
+    xPosition: elRect.x,
     yPosition: elRect.y + yOffset,
     width: elRect.width,
     height: elRect.height,
@@ -95,7 +94,25 @@ export const drawLabel = (p5, inputId, value) => {
   }
 
   transparentShape(p5, border, {stroke: true, fill: true, opacity: 0})
- 
+}
+
+export const drawLabel = (p5, labelId) => {
+  p5.textFont('EditorialNew')
+  const el = document.getElementById(labelId)
+  const value = el.innerHTML
+  const elRect = el.getBoundingClientRect()
+  const elStyle = window.getComputedStyle(el, null)
+  const elFontSize = Number(elStyle.getPropertyValue('font-size').slice(0, -2))
+
+  console.log(value)
+  transparentText(p5, {
+    text: value || inputId.toUpperCase(),
+    xPosition: elRect.x,
+    yPosition: elRect.y,
+    width: elRect.width,
+    height: elRect.height,
+    textSize: elFontSize
+  })
 }
 
 export const drawXIcon = (p5, buttonId, hover, progress=1) => {
