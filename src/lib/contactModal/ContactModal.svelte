@@ -110,7 +110,7 @@
     right: 0;
     z-index: 1;
     margin: 50px;
-    background-color: transparent;
+    /* background-color: transparent; */
     border: none;
     color: transparent;
   }
