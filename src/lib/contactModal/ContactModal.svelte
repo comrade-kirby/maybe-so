@@ -150,13 +150,12 @@
 
   input, textarea {
     margin-top: 10px;
-    background-color: transparent;
+    /* background-color: transparent; */
     border: none;
     font-family: Sneak;
     font-size: 1.25rem;
     color: transparent;
     caret-color : lightpink;
-    border-bottom: 4px transparent;
   }
 
   textarea {
