@@ -59,9 +59,7 @@
 
 {#if $contactModalOpen}
   <div id='p5-contact' bind:clientHeight={h} bind:clientWidth={w}>
-    <!-- <div id='p5-contact'></div> -->
     <button id='close-button' on:click={closeContactModal}>close</button>
-    <!-- <div class='contact-form'> -->
     <form action="https://formspree.io/mqkyvzdr" method="POST">
         <input 
           type='text'
@@ -88,7 +86,6 @@
         <label for='introduction' id='intro-label'>INTRODUCTION</label>
       <button type="submit">SUBMIT</button>
     </form>
-    <!-- </div> -->
   </div>
   <P5Canvas sketch={sketch} />
 {/if}
@@ -105,12 +102,6 @@
     z-index: 2;
   }
 
-  /* #p5-contact {
-    position: absolute;
-    top: 0;
-    left: 0;
-  } */
-
   #close-button {
     position: absolute;
     height: 30px;
@@ -124,19 +115,6 @@
     color: transparent;
   }
 
-  /* .contact-form {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-  } */
-
   form {
     box-sizing: border-box;
     display: flex;
@@ -149,7 +127,6 @@
 
   input, textarea {
     margin-top: 10px;
-    /* background-color: transparent; */
     border: none;
     font-family: Sneak;
     font-size: 1.25rem;
@@ -179,7 +156,7 @@
     top: 0;
   }
 
-  @media screen and (max-width: 700px) {
+  /* @media screen and (max-width: 700px) {
     input, textarea {
       font-size: 1rem;
     }
@@ -189,7 +166,7 @@
       width: 20px;
       margin: 20px;
     }
-  }
+  } */
   
  
 </style>
