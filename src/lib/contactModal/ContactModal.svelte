@@ -104,7 +104,7 @@
     width: 100%;
     color: white;
     display: flex;
-   
+    overflow: scroll;
     align-items: center;
     z-index: 2;
   }
