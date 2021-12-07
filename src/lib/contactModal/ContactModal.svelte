@@ -93,7 +93,7 @@
 
 <style>
   #p5-contact {
-    position: fixed;
+    position: absolute;
     height: 100%;
     width: 100%;
     display: flex;
@@ -123,6 +123,7 @@
     width: 100%;
     padding: 20px;
     max-width: 650px;
+    z-index: 1;
   }
 
   input, textarea {
@@ -154,6 +155,10 @@
 
   :focus + label, .filled + label {
     top: 0;
+  }
+
+  .p5Canvas {
+    background-color: red;
   }
 
   /* @media screen and (max-width: 700px) {
