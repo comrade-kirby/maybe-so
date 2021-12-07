@@ -4696,11 +4696,7 @@ var init_shims = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/__layout-a4a398d4.js
-var layout_a4a398d4_exports = {};
-__export(layout_a4a398d4_exports, {
-  default: () => _layout
-});
+// .svelte-kit/output/server/chunks/stores-9b038c6d.js
 function writable(value, start = noop) {
   let stop;
   const subscribers = new Set();
@@ -4838,12 +4834,31 @@ function tweened(value, defaults = {}) {
     subscribe: store.subscribe
   };
 }
-var css$5, Purple, css$4, Pink, subscriber_queue, pinkGradient, purpleGradient, orangeGradient, css$3, Orange, css$2, Background, css$1, Footer, css, _layout;
-var init_layout_a4a398d4 = __esm({
-  ".svelte-kit/output/server/chunks/__layout-a4a398d4.js"() {
+var subscriber_queue, pinkGradient, purpleGradient, orangeGradient, contactModalOpen;
+var init_stores_9b038c6d = __esm({
+  ".svelte-kit/output/server/chunks/stores-9b038c6d.js"() {
     init_shims();
-    init_app_4b8e9ed2();
-    css$5 = {
+    init_app_134de24a();
+    subscriber_queue = [];
+    pinkGradient = tweened([0, 0], { duration: 1e3 });
+    purpleGradient = tweened([80, 20], { duration: 1e3 });
+    orangeGradient = tweened([15, 75], { duration: 1e3 });
+    contactModalOpen = writable(false);
+  }
+});
+
+// .svelte-kit/output/server/chunks/__layout-8a5dece2.js
+var layout_8a5dece2_exports = {};
+__export(layout_8a5dece2_exports, {
+  default: () => _layout
+});
+var css$6, Purple, css$5, Pink, css$4, Orange, css$3, Background, css$2, Footer, P5Canvas, primaryOpacity, hoverOpacity, transparentText, drawContainer, setupCanvas, getOpacity, transparentShape, drawInput, drawLabel, drawXIcon, css$1, ContactModal, css, _layout;
+var init_layout_8a5dece2 = __esm({
+  ".svelte-kit/output/server/chunks/__layout-8a5dece2.js"() {
+    init_shims();
+    init_app_134de24a();
+    init_stores_9b038c6d();
+    css$6 = {
       code: "#purple.svelte-l5yhzj{position:fixed;top:0px;left:0px;height:100%;width:100%;z-index:-1;background:radial-gradient(\n			at var(--purpleX) var(--purpleY),\n			hsla(306, 100%, 90%, 0.5) 40%, \n      hsla(0, 0%, 100%, 0.3) 80%, \n			transparent\n		)}",
       map: null
     };
@@ -4851,10 +4866,10 @@ var init_layout_a4a398d4 = __esm({
       let { purpleGradient: purpleGradient2 } = $$props;
       if ($$props.purpleGradient === void 0 && $$bindings.purpleGradient && purpleGradient2 !== void 0)
         $$bindings.purpleGradient(purpleGradient2);
-      $$result.css.add(css$5);
+      $$result.css.add(css$6);
       return `<div id="${"purple"}" style="${"--purpleX: " + escape(purpleGradient2[0]) + "%; --purpleY: " + escape(purpleGradient2[1]) + "%"}" class="${"svelte-l5yhzj"}"></div>`;
     });
-    css$4 = {
+    css$5 = {
       code: "#pink.svelte-t8549v{position:fixed;top:0px;left:0px;height:100%;width:100%;z-index:0;background:radial-gradient(\n      farthest-side at var(--pinkX) var(--pinkY),\n      hsla(0, 100%, 90%, 0.5) 20%,\n      hsla(47, 100%, 85%, 0.1) 60%,\n      transparent 80%\n    )}",
       map: null
     };
@@ -4862,14 +4877,10 @@ var init_layout_a4a398d4 = __esm({
       let { pinkGradient: pinkGradient2 } = $$props;
       if ($$props.pinkGradient === void 0 && $$bindings.pinkGradient && pinkGradient2 !== void 0)
         $$bindings.pinkGradient(pinkGradient2);
-      $$result.css.add(css$4);
+      $$result.css.add(css$5);
       return `<div id="${"pink"}" style="${"--pinkX: " + escape(pinkGradient2[0]) + "%; --pinkY: " + escape(pinkGradient2[1]) + "%"}" class="${"svelte-t8549v"}"></div>`;
     });
-    subscriber_queue = [];
-    pinkGradient = tweened([0, 0], { duration: 1e3 });
-    purpleGradient = tweened([80, 20], { duration: 1e3 });
-    orangeGradient = tweened([15, 75], { duration: 1e3 });
-    css$3 = {
+    css$4 = {
       code: "#orange.svelte-13tdgl5{position:fixed;top:0px;left:0px;height:100%;width:100%;z-index:-2;background:radial-gradient(\n      farthest-side at var(--orangeX) var(--orangeY),\n      hsla(25, 100%, 80%, 0.6) 20%,\n      hsla(0, 0%, 100%, 0.1) 70%,\n      transparent\n    )}",
       map: null
     };
@@ -4877,11 +4888,11 @@ var init_layout_a4a398d4 = __esm({
       let { orangeGradient: orangeGradient2 } = $$props;
       if ($$props.orangeGradient === void 0 && $$bindings.orangeGradient && orangeGradient2 !== void 0)
         $$bindings.orangeGradient(orangeGradient2);
-      $$result.css.add(css$3);
+      $$result.css.add(css$4);
       return `<div id="${"orange"}" style="${"--orangeX: " + escape(orangeGradient2[0]) + "%; --orangeY: " + escape(orangeGradient2[1]) + "%"}" class="${"svelte-13tdgl5"}"></div>`;
     });
-    css$2 = {
-      code: ".background.svelte-1u1m2dk{position:fixed;top:0px;left:0px;height:100%;width:100%;background-color:hsla(47, 100%, 80%, 0.4);z-index:-1}",
+    css$3 = {
+      code: ".background.svelte-1d38swv{position:fixed;top:0px;left:0px;height:100%;width:100%;background-color:var(--yellow-white);z-index:-1}",
       map: null
     };
     Background = create_ssr_component(($$result, $$props, $$bindings, slots) => {
@@ -4891,45 +4902,208 @@ var init_layout_a4a398d4 = __esm({
       $$unsubscribe_pinkGradient = subscribe(pinkGradient, (value) => $pinkGradient = value);
       $$unsubscribe_purpleGradient = subscribe(purpleGradient, (value) => $purpleGradient = value);
       $$unsubscribe_orangeGradient = subscribe(orangeGradient, (value) => $orangeGradient = value);
-      $$result.css.add(css$2);
+      $$result.css.add(css$3);
       $$unsubscribe_pinkGradient();
       $$unsubscribe_purpleGradient();
       $$unsubscribe_orangeGradient();
-      return `<div class="${"background svelte-1u1m2dk"}">${validate_component(Pink, "Pink").$$render($$result, { pinkGradient: $pinkGradient }, {}, {})}
+      return `<div class="${"background svelte-1d38swv"}">${validate_component(Pink, "Pink").$$render($$result, { pinkGradient: $pinkGradient }, {}, {})}
 	${validate_component(Purple, "Purple").$$render($$result, { purpleGradient: $purpleGradient }, {}, {})}
 	${validate_component(Orange, "Orange").$$render($$result, { orangeGradient: $orangeGradient }, {}, {})}
 </div>`;
     });
-    css$1 = {
-      code: "footer.svelte-14y6yf5.svelte-14y6yf5{display:flex;flex-direction:row;justify-content:space-between;background-color:var(--black);padding:60px 86px}h2.svelte-14y6yf5.svelte-14y6yf5{font-family:EditorialNew;font-size:2.5rem;margin-bottom:60px;color:white}p.svelte-14y6yf5.svelte-14y6yf5{color:white;font-size:1rem}.footer-right.svelte-14y6yf5.svelte-14y6yf5{align-self:flex-end}.footer-right.svelte-14y6yf5 p.svelte-14y6yf5{margin-top:24px;text-align:right}@media screen and (max-width: 650px){footer.svelte-14y6yf5.svelte-14y6yf5{padding:60px 35px;flex-direction:column}h2.svelte-14y6yf5.svelte-14y6yf5{margin-bottom:10px}.footer-left.svelte-14y6yf5 p.svelte-14y6yf5{font-size:0.75rem;line-height:1rem}.footer-right.svelte-14y6yf5.svelte-14y6yf5{display:flex;flex-direction:row;width:100%;justify-content:space-between;align-items:flex-end;margin-top:40px}.footer-right.svelte-14y6yf5 p.svelte-14y6yf5{text-align:left}}",
+    css$2 = {
+      code: "footer.svelte-1ro8hif.svelte-1ro8hif{display:flex;flex-direction:row;justify-content:space-between;background-color:var(--black);padding:60px 86px}h2.svelte-1ro8hif.svelte-1ro8hif{font-family:EditorialNew;font-size:2.5rem;margin-bottom:60px;color:var(--white)}p.svelte-1ro8hif.svelte-1ro8hif{color:var(--white);font-size:1rem}.footer-right.svelte-1ro8hif.svelte-1ro8hif{align-self:flex-end}.footer-right.svelte-1ro8hif p.svelte-1ro8hif{margin-top:24px;text-align:right}@media screen and (max-width: 650px){footer.svelte-1ro8hif.svelte-1ro8hif{padding:60px 35px;flex-direction:column}h2.svelte-1ro8hif.svelte-1ro8hif{margin-bottom:10px}.footer-left.svelte-1ro8hif p.svelte-1ro8hif{font-size:0.75rem;line-height:1rem}.footer-right.svelte-1ro8hif.svelte-1ro8hif{display:flex;flex-direction:row;width:100%;justify-content:space-between;align-items:flex-end;margin-top:40px}.footer-right.svelte-1ro8hif p.svelte-1ro8hif{text-align:left}}",
       map: null
     };
     Footer = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      $$result.css.add(css$1);
-      return `<footer class="${"svelte-14y6yf5"}"><div class="${"footer-left svelte-14y6yf5"}"><h2 class="${"svelte-14y6yf5"}">(MAYBE SO)</h2>
-    <p class="${"svelte-14y6yf5"}">Copyright 2021. All rights reserved.<br>Made with \u2665 by Maybe So</p></div>
-  <div class="${"footer-right svelte-14y6yf5"}"><p class="${"svelte-14y6yf5"}">501 Eastern Parkway<br>Louisville, KY 40217</p>
-    <p class="${"svelte-14y6yf5"}">howdy@maybeso.studio</p></div>
+      $$result.css.add(css$2);
+      return `<footer class="${"svelte-1ro8hif"}"><div class="${"footer-left svelte-1ro8hif"}"><h2 class="${"svelte-1ro8hif"}">(MAYBE SO)</h2>
+    <p class="${"svelte-1ro8hif"}">Copyright 2021. All rights reserved.<br>Made with \u2665 by Maybe So</p></div>
+  <div class="${"footer-right svelte-1ro8hif"}"><p class="${"svelte-1ro8hif"}">501 Eastern Parkway<br>Louisville, KY 40217</p>
+    <p class="${"svelte-1ro8hif"}">howdy@maybeso.studio</p></div>
 </footer>`;
     });
+    P5Canvas = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      let { sketch } = $$props;
+      if ($$props.sketch === void 0 && $$bindings.sketch && sketch !== void 0)
+        $$bindings.sketch(sketch);
+      return ``;
+    });
+    primaryOpacity = 0;
+    hoverOpacity = 10;
+    transparentText = (p5, options2) => {
+      const {
+        text,
+        textSize,
+        textLeading,
+        bold,
+        xPosition,
+        yPosition,
+        width,
+        height,
+        hover,
+        progress
+      } = options2;
+      let erase = 100;
+      let opacity = getOpacity(hover);
+      erase = progress ? erase * progress : erase;
+      opacity = progress ? opacity * progress : opacity;
+      p5.textStyle(p5.NORMAL);
+      p5.textSize(textSize);
+      p5.textLeading(textLeading);
+      p5.textAlign(p5.LEFT, p5.TOP);
+      p5.fill(0);
+      p5.noStroke();
+      p5.erase(erase);
+      p5.textWrap(p5.WORD);
+      p5.text(text, xPosition, yPosition, width, height);
+      p5.noErase();
+      p5.fill(0, 0, 0, opacity);
+      p5.text(text, xPosition, yPosition, width, height);
+    };
+    drawContainer = (p5, width, height, xPosition = 0) => {
+      p5.fill(0, 0, 15);
+      p5.noStroke();
+      p5.rect(xPosition, 0, width, height);
+    };
+    setupCanvas = (p5, width, height, parentId) => {
+      const canvas = p5.createCanvas(width, height);
+      canvas.parent(parentId);
+      p5.colorMode(p5.HSL, 360, 100, 100, 100);
+      p5.textFont("Sneak");
+    };
+    getOpacity = (hover) => hover ? hoverOpacity : primaryOpacity;
+    transparentShape = (p5, shapeCallback, options2) => {
+      const { fill, stroke, progress = 1, opacity } = options2;
+      const maxErase = 100;
+      const currentErase = maxErase * progress;
+      fill ? p5.fill(0) : p5.noFill();
+      stroke ? p5.stroke(0) : p5.noStroke();
+      p5.erase(currentErase, currentErase);
+      shapeCallback();
+      p5.noErase();
+      stroke ? p5.stroke(0, 0, 0, opacity * progress) : p5.noStroke();
+      fill ? p5.fill(0, 0, 0, opacity * progress) : p5.noFill();
+      shapeCallback();
+    };
+    drawInput = (p5, inputId2, value) => {
+      p5.textFont("Sneak");
+      const yOffset = 5;
+      const el = document.getElementById(inputId2);
+      const elRect = el.getBoundingClientRect();
+      const elStyle = window.getComputedStyle(el, null);
+      const elFontSize = Number(elStyle.getPropertyValue("font-size").slice(0, -2));
+      transparentText(p5, {
+        text: value,
+        xPosition: elRect.x,
+        yPosition: elRect.y + yOffset,
+        width: elRect.width,
+        height: elRect.height,
+        textSize: elFontSize
+      });
+      const border = () => {
+        p5.line(elRect.left, elRect.bottom, elRect.right, elRect.bottom);
+      };
+      transparentShape(p5, border, { stroke: true, fill: true, opacity: 0 });
+    };
+    drawLabel = (p5, labelId) => {
+      p5.textFont("EditorialNew");
+      const el = document.getElementById(labelId);
+      const value = el.innerHTML;
+      const elRect = el.getBoundingClientRect();
+      const elStyle = window.getComputedStyle(el, null);
+      const elFontSize = Number(elStyle.getPropertyValue("font-size").slice(0, -2));
+      transparentText(p5, {
+        text: value || inputId.toUpperCase(),
+        xPosition: elRect.x,
+        yPosition: elRect.y,
+        width: elRect.width,
+        height: elRect.height,
+        textSize: elFontSize
+      });
+    };
+    drawXIcon = (p5, buttonId, hover, progress = 1) => {
+      const el = document.getElementById(buttonId);
+      const elRect = el.getBoundingClientRect();
+      p5.strokeWeight(2);
+      const xIcon = () => {
+        p5.line(elRect.left, elRect.top, elRect.right, elRect.bottom);
+        p5.line(elRect.left, elRect.bottom, elRect.right, elRect.top);
+      };
+      const options2 = { stroke: true, opacity: 0 };
+      transparentShape(p5, xIcon, options2);
+    };
+    css$1 = {
+      code: ".contact-modal.svelte-1xgur0.svelte-1xgur0{position:fixed;top:0;height:100%;width:100%;color:white;display:flex;align-items:center;z-index:2}#p5-contact.svelte-1xgur0.svelte-1xgur0{position:absolute;top:0;left:0}#close-button.svelte-1xgur0.svelte-1xgur0{position:absolute;height:30px;width:30px;top:0;right:0;z-index:1;margin:50px;background-color:transparent;border:none;color:transparent}.contact-form.svelte-1xgur0.svelte-1xgur0{position:absolute;top:0;left:0;height:100%;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;box-sizing:border-box}form.svelte-1xgur0.svelte-1xgur0{box-sizing:border-box;display:flex;flex-direction:column;width:100%;padding:20px;max-width:650px}input.svelte-1xgur0.svelte-1xgur0,textarea.svelte-1xgur0.svelte-1xgur0{margin-top:10px;background-color:transparent;border:none;font-family:Sneak;font-size:1.25rem;color:transparent;caret-color:lightpink;border-bottom:4px transparent}textarea.svelte-1xgur0.svelte-1xgur0{height:100px}label.svelte-1xgur0.svelte-1xgur0{margin-top:10px;position:relative;transition:0.2s ease-in-out;opacity:0;align-self:flex-end;top:-30px}.svelte-1xgur0.svelte-1xgur0:focus{outline:none;background-color:hsla(0, 100%, 90%, 0.1)}.svelte-1xgur0:focus+label.svelte-1xgur0,.filled.svelte-1xgur0+label.svelte-1xgur0{top:0}@media screen and (max-width: 700px){input.svelte-1xgur0.svelte-1xgur0,textarea.svelte-1xgur0.svelte-1xgur0{font-size:1rem}#close-button.svelte-1xgur0.svelte-1xgur0{height:20px;width:20px;margin:20px}}",
+      map: null
+    };
+    ContactModal = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      let $contactModalOpen, $$unsubscribe_contactModalOpen;
+      $$unsubscribe_contactModalOpen = subscribe(contactModalOpen, (value) => $contactModalOpen = value);
+      let nameValue, emailValue, introductionValue, h, w;
+      const sketch = (p5) => {
+        p5.setup = () => {
+          setupCanvas(p5, w, h, "p5-contact");
+        };
+        p5.draw = () => {
+          p5.clear();
+          drawContainer(p5, w, h);
+          drawXIcon(p5, "close-button");
+          {
+            drawInputs();
+            drawLabels();
+          }
+        };
+        p5.windowResized = () => {
+          p5.resizeCanvas(contactWidth, contactHeight);
+          p5.redraw();
+        };
+        const drawInputs = () => {
+          drawInput(p5, "name", nameValue);
+          drawInput(p5, "email", emailValue);
+          drawInput(p5, "introduction", introductionValue);
+        };
+        const drawLabels = () => {
+          drawLabel(p5, "name-label");
+          drawLabel(p5, "email-label");
+          drawLabel(p5, "intro-label");
+        };
+      };
+      $$result.css.add(css$1);
+      $$unsubscribe_contactModalOpen();
+      return `${$contactModalOpen ? `<div class="${"contact-modal svelte-1xgur0"}"><div id="${"p5-contact"}" class="${"svelte-1xgur0"}"></div>
+    <button id="${"close-button"}" class="${"svelte-1xgur0"}">close</button>
+    <div class="${"contact-form svelte-1xgur0"}"><form action="${"https://formspree.io/mqkyvzdr"}" method="${"POST"}" class="${"svelte-1xgur0"}"><input type="${"text"}" name="${"name"}" id="${"name"}" required class="${["svelte-1xgur0", ""].join(" ").trim()}"${add_attribute("value", nameValue, 0)}>
+          <label for="${"name"}" id="${"name-label"}" class="${"svelte-1xgur0"}">NAME</label>
+          <input type="${"email"}" name="${"email"}" id="${"email"}" required class="${["svelte-1xgur0", ""].join(" ").trim()}"${add_attribute("value", emailValue, 0)}>
+          <label for="${"email"}" id="${"email-label"}" class="${"svelte-1xgur0"}">EMAIL</label>
+          <textarea name="${"introduction"}" id="${"introduction"}" required class="${["svelte-1xgur0", ""].join(" ").trim()}">${""}</textarea>
+          <label for="${"introduction"}" id="${"intro-label"}" class="${"svelte-1xgur0"}">INTRODUCTION</label>
+        <button type="${"submit"}" class="${"svelte-1xgur0"}">SUBMIT</button></form></div>
+    ${validate_component(P5Canvas, "P5Canvas").$$render($$result, { sketch }, {}, {})}</div>` : ``}`;
+    });
     css = {
-      code: "main.svelte-1ibupna{box-sizing:border-box;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;width:100%;padding:0 90px;box-sizing:border-box;z-index:1}div.svelte-1ibupna{width:100%;max-width:1400px}@media screen and (max-width: 1000px){main.svelte-1ibupna{padding:0 35px}}",
+      code: "main.svelte-1gvy00u{box-sizing:border-box;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;width:100%;padding:0 90px;box-sizing:border-box;z-index:1}div.svelte-1gvy00u{width:100%;max-width:1400px}@media screen and (max-width: 1000px){main.svelte-1gvy00u{padding:0 35px}}@media screen and (max-width: 350px){main.svelte-1gvy00u{padding:0 12px}}",
       map: null
     };
     _layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      let $contactModalOpen, $$unsubscribe_contactModalOpen;
+      $$unsubscribe_contactModalOpen = subscribe(contactModalOpen, (value) => $contactModalOpen = value);
       $$result.css.add(css);
+      $$unsubscribe_contactModalOpen();
       return `
 
-<main class="${"svelte-1ibupna"}"><div class="${"svelte-1ibupna"}">${slots.default ? slots.default({}) : ``}</div></main>
-${validate_component(Footer, "Footer").$$render($$result, {}, {}, {})}
+<main class="${"svelte-1gvy00u"}">${validate_component(ContactModal, "ContactModal").$$render($$result, {}, {}, {})}
+	${!$contactModalOpen ? `<div class="${"svelte-1gvy00u"}">${slots.default ? slots.default({}) : ``}</div>` : ``}</main>
+${!$contactModalOpen ? `${validate_component(Footer, "Footer").$$render($$result, {}, {}, {})}` : ``}
 ${validate_component(Background, "Background").$$render($$result, {}, {}, {})}`;
     });
   }
 });
 
-// .svelte-kit/output/server/chunks/error-9a537e98.js
-var error_9a537e98_exports = {};
-__export(error_9a537e98_exports, {
+// .svelte-kit/output/server/chunks/error-a9ef8403.js
+var error_a9ef8403_exports = {};
+__export(error_a9ef8403_exports, {
   default: () => Error2,
   load: () => load
 });
@@ -4937,10 +5111,10 @@ function load({ error: error2, status }) {
   return { props: { error: error2, status } };
 }
 var Error2;
-var init_error_9a537e98 = __esm({
-  ".svelte-kit/output/server/chunks/error-9a537e98.js"() {
+var init_error_a9ef8403 = __esm({
+  ".svelte-kit/output/server/chunks/error-a9ef8403.js"() {
     init_shims();
-    init_app_4b8e9ed2();
+    init_app_134de24a();
     Error2 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       let { status } = $$props;
       let { error: error2 } = $$props;
@@ -4960,27 +5134,31 @@ ${error2.stack ? `<pre>${escape(error2.stack)}</pre>` : ``}`;
   }
 });
 
-// .svelte-kit/output/server/chunks/index-8e7c5461.js
-var index_8e7c5461_exports = {};
-__export(index_8e7c5461_exports, {
+// .svelte-kit/output/server/chunks/index-4eb162a7.js
+var index_4eb162a7_exports = {};
+__export(index_4eb162a7_exports, {
   default: () => Routes,
   prerender: () => prerender
 });
 var css$52, Button, css$42, CanWeHelp, css$32, HowWeDoIt, css$22, Intro, css$12, OurWork, css2, offeringBottomMargin, WhatWeDo, prerender, Routes;
-var init_index_8e7c5461 = __esm({
-  ".svelte-kit/output/server/chunks/index-8e7c5461.js"() {
+var init_index_4eb162a7 = __esm({
+  ".svelte-kit/output/server/chunks/index-4eb162a7.js"() {
     init_shims();
-    init_app_4b8e9ed2();
+    init_app_134de24a();
+    init_stores_9b038c6d();
     css$52 = {
-      code: "button.svelte-1wr39dj{padding:24px 50px;font-size:1.125rem;font-family:EditorialNew;font-weight:400;background-color:transparent;border-radius:260px;border:2px solid var(--black);transition:0.2s ease-in;align-self:flex-start}button.svelte-1wr39dj:hover{box-shadow:2px 3px var(--black)}@media screen and (max-width: 1000px){button.svelte-1wr39dj{font-size:0.75rem}}@media screen and (max-width: 650px){button.svelte-1wr39dj{padding:18px 0;border:1px solid var(--black);align-self:stretch\n    }}",
+      code: "button.svelte-108vpya{padding:16px 36px;font-size:1rem;font-family:EditorialNew;font-weight:400;background-color:transparent;border-radius:260px;border:2px solid var(--black);transition:0.2s ease-in;align-self:flex-start}button.svelte-108vpya:hover{box-shadow:2px 3px var(--black)}@media screen and (max-width: 1000px){button.svelte-108vpya{font-size:0.75rem}}@media screen and (max-width: 650px){button.svelte-108vpya{padding:16px 0;border:1px solid var(--black);align-self:stretch\n    }}",
       map: null
     };
     Button = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       let { text } = $$props;
+      let { handleClick } = $$props;
       if ($$props.text === void 0 && $$bindings.text && text !== void 0)
         $$bindings.text(text);
+      if ($$props.handleClick === void 0 && $$bindings.handleClick && handleClick !== void 0)
+        $$bindings.handleClick(handleClick);
       $$result.css.add(css$52);
-      return `<button class="${"svelte-1wr39dj"}">${escape(text)}
+      return `<button class="${"svelte-108vpya"}">${escape(text)}
 </button>`;
     });
     css$42 = {
@@ -4988,10 +5166,14 @@ var init_index_8e7c5461 = __esm({
       map: null
     };
     CanWeHelp = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      const openContactModal = () => contactModalOpen.set(true);
       $$result.css.add(css$42);
       return `<section class="${"svelte-1tg26hg"}"><h1>Can we help you with something? <span class="${"svelte-1tg26hg"}">(MAYBE SO)</span></h1>
   <p class="${"svelte-1tg26hg"}">Think we might be a good fit? Reach out and say hi! Make sure to let us know a bit about yourself, your project, and any timeline or budget you may have in mind. </p>
-	${validate_component(Button, "Button").$$render($$result, { text: "LET\u2019S MAKE SOMETHING TOGETHER" }, {}, {})}
+	${validate_component(Button, "Button").$$render($$result, {
+        text: "LET\u2019S MAKE SOMETHING TOGETHER",
+        handleClick: openContactModal
+      }, {}, {})}
 </section>`;
     });
     css$32 = {
@@ -5017,10 +5199,14 @@ var init_index_8e7c5461 = __esm({
       map: null
     };
     Intro = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      const openContactModal = () => contactModalOpen.set(true);
       $$result.css.add(css$22);
       return `<section class="${"svelte-8vtsw5"}"><h1 class="${"svelte-8vtsw5"}"><span class="${"svelte-8vtsw5"}">(MAYBE SO)</span> is a digital creative studio that builds unique and accessible brands and web experiences.
 	</h1>
-	${validate_component(Button, "Button").$$render($$result, { text: "LET\u2019S MAKE SOMETHING TOGETHER" }, {}, {})}
+	${validate_component(Button, "Button").$$render($$result, {
+        text: "LET\u2019S MAKE SOMETHING TOGETHER",
+        handleClick: openContactModal
+      }, {}, {})}
 </section>`;
     });
     css$12 = {
@@ -5082,7 +5268,7 @@ ${validate_component(CanWeHelp, "CanWeHelp").$$render($$result, {}, {}, {})}`;
   }
 });
 
-// .svelte-kit/output/server/chunks/app-4b8e9ed2.js
+// .svelte-kit/output/server/chunks/app-134de24a.js
 function get_single_valued_header(headers, key) {
   const value = headers[key];
   if (Array.isArray(value)) {
@@ -6393,9 +6579,9 @@ function init(settings = default_settings) {
     amp: false,
     dev: false,
     entry: {
-      file: assets + "/_app/start-995be9c6.js",
+      file: assets + "/_app/start-60e1500e.js",
       css: [assets + "/_app/assets/start-61d1577b.css"],
-      js: [assets + "/_app/start-995be9c6.js", assets + "/_app/chunks/vendor-d140db5b.js"]
+      js: [assets + "/_app/start-60e1500e.js", assets + "/_app/chunks/vendor-e0d00692.js", assets + "/_app/chunks/preload-helper-ec9aa979.js"]
     },
     fetched: void 0,
     floc: false,
@@ -6439,8 +6625,8 @@ function render(request, {
   return respond({ ...request, host }, options, { prerender: prerender2 });
 }
 var __accessCheck, __privateGet, __privateAdd, __privateSet, _map, chars, unsafeChars, reserved, escaped$1, objectProtoOwnPropertyNames, subscriber_queue2, escape_json_string_in_html_dict, escape_html_attr_dict, s$1, s, absolute, ReadOnlyFormData, identity, is_client, now, raf, tasks, current_component, escaped, missing_component, on_destroy, css3, Root, base, assets, user_hooks, template, options, default_settings, empty, manifest, get_hooks, module_lookup, metadata_lookup;
-var init_app_4b8e9ed2 = __esm({
-  ".svelte-kit/output/server/chunks/app-4b8e9ed2.js"() {
+var init_app_134de24a = __esm({
+  ".svelte-kit/output/server/chunks/app-134de24a.js"() {
     init_shims();
     __accessCheck = (obj, member, msg) => {
       if (!member.has(obj))
@@ -6632,11 +6818,11 @@ ${``}`;
       externalFetch: hooks.externalFetch || fetch
     });
     module_lookup = {
-      "src/routes/__layout.svelte": () => Promise.resolve().then(() => (init_layout_a4a398d4(), layout_a4a398d4_exports)),
-      ".svelte-kit/build/components/error.svelte": () => Promise.resolve().then(() => (init_error_9a537e98(), error_9a537e98_exports)),
-      "src/routes/index.svelte": () => Promise.resolve().then(() => (init_index_8e7c5461(), index_8e7c5461_exports))
+      "src/routes/__layout.svelte": () => Promise.resolve().then(() => (init_layout_8a5dece2(), layout_8a5dece2_exports)),
+      ".svelte-kit/build/components/error.svelte": () => Promise.resolve().then(() => (init_error_a9ef8403(), error_a9ef8403_exports)),
+      "src/routes/index.svelte": () => Promise.resolve().then(() => (init_index_4eb162a7(), index_4eb162a7_exports))
     };
-    metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-2715e14a.js", "css": ["assets/pages/__layout.svelte-c7ab7b88.css"], "js": ["pages/__layout.svelte-2715e14a.js", "chunks/vendor-d140db5b.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-b6b3c785.js", "css": [], "js": ["error.svelte-b6b3c785.js", "chunks/vendor-d140db5b.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-6b847e0b.js", "css": ["assets/pages/index.svelte-39c434f4.css"], "js": ["pages/index.svelte-6b847e0b.js", "chunks/vendor-d140db5b.js"], "styles": [] } };
+    metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-b81a31e3.js", "css": ["assets/pages/__layout.svelte-0037de79.css"], "js": ["pages/__layout.svelte-b81a31e3.js", "chunks/vendor-e0d00692.js", "chunks/stores-6e73d3f1.js", "chunks/preload-helper-ec9aa979.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-d3660bfd.js", "css": [], "js": ["error.svelte-d3660bfd.js", "chunks/vendor-e0d00692.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-7bef1450.js", "css": ["assets/pages/index.svelte-ee022178.css"], "js": ["pages/index.svelte-7bef1450.js", "chunks/vendor-e0d00692.js", "chunks/stores-6e73d3f1.js"], "styles": [] } };
   }
 });
 
@@ -6648,7 +6834,7 @@ init_shims();
 
 // .svelte-kit/output/server/app.js
 init_shims();
-init_app_4b8e9ed2();
+init_app_134de24a();
 
 // .svelte-kit/netlify/entry.js
 init();
