@@ -135,20 +135,24 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 300px;
+    align-items: center;
     box-sizing: border-box;
   }
 
   form {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    max-width: 650px;
   }
 
   input, textarea {
     margin-top: 10px;
     background-color: transparent;
     border: none;
-    font-family: EditorialNew;
+    font-family: Sneak;
     font-size: 1.25rem;
     color: transparent;
     caret-color : lightpink;
@@ -177,6 +181,17 @@
     top: 0;
   }
 
+  @media screen and (max-width: 700px) {
+    input, textarea {
+      font-size: 1rem;
+    }
+
+    #close-button {
+      height: 20px;
+      width: 20px;
+      margin: 20px;
+    }
+  }
   
  
 </style>

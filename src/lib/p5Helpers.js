@@ -104,7 +104,6 @@ export const drawLabel = (p5, labelId) => {
   const elStyle = window.getComputedStyle(el, null)
   const elFontSize = Number(elStyle.getPropertyValue('font-size').slice(0, -2))
 
-  console.log(value)
   transparentText(p5, {
     text: value || inputId.toUpperCase(),
     xPosition: elRect.x,

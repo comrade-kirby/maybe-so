@@ -32,7 +32,9 @@
 	</div>
 	{/if}
 </main>
-<Footer />
+{#if !$contactModalOpen}
+	<Footer />
+{/if}
 <Background />
 
 <style>
