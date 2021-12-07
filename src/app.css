@@ -103,7 +103,9 @@ p, li {
 canvas {
 	background-color: red;
 	position: fixed;
+	top: 0;
 }
+
 a:hover {
 	text-decoration: underline;
 }
