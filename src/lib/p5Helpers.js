@@ -77,7 +77,6 @@ export const drawInput = (p5, inputId, containerId, value) => {
 
   const container = document.getElementById(containerId)
   const containerRect = container.getBoundingClientRect()
-  console.log(containerRect.y)
   const el = document.getElementById(inputId)
   const elRect = el.getBoundingClientRect()
   const elStyle = window.getComputedStyle(el, null)

@@ -110,7 +110,7 @@
     right: 0;
     z-index: 1;
     margin: 50px;
-    /* background-color: transparent; */
+    background-color: transparent;
     border: none;
     color: transparent;
   }
@@ -132,6 +132,7 @@
     font-family: Sneak;
     font-size: 1.25rem;
     color: transparent;
+    background-color: transparent;
     caret-color : lightpink;
   }
 
@@ -157,7 +158,7 @@
     top: 0;
   }
 
-  /* @media screen and (max-width: 700px) {
+  @media screen and (max-width: 700px) {
     input, textarea {
       font-size: 1rem;
     }
@@ -167,7 +168,7 @@
       width: 20px;
       margin: 20px;
     }
-  } */
+  }
   
  
 </style>
