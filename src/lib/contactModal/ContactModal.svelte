@@ -113,8 +113,7 @@
     padding: 0;
     background-color: transparent;
     border: none;
-    color: pink;
-    border: 1px solid pink;
+    color: transparent;
   }
 
   form {
