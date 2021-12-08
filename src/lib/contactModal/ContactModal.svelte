@@ -112,7 +112,8 @@
     margin: 50px;
     background-color: transparent;
     border: none;
-    color: transparent;
+    color: pink;
+    border: 1px solid pink;
   }
 
   form {
