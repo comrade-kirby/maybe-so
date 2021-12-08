@@ -24,7 +24,7 @@
 <svelte:window on:touchend|once={(e) => requestOrientationPermission()} 
 	on:mousemove={(e) => updateDesktopGradients(e)} />
 
-<main  >
+<main>
 	<ContactModal />
 	{#if !$contactModalOpen}
 	<div>

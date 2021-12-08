@@ -25,7 +25,7 @@
     p5.draw = () => {
       p5.clear()
       drawContainer(p5, w, h)
-      drawXIcon(p5, 'close-button', closeButtonHover)
+      drawXIcon(p5, 'close-button', 'p5-contact', closeButtonHover)
       if (!messageSent) {
         drawInputs()
         drawLabels()

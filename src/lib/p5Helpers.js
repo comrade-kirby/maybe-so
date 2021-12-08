@@ -86,14 +86,14 @@ export const drawInput = (p5, inputId, containerId, value) => {
   transparentText(p5, {
     text: value,
     xPosition: elRect.x,
-    yPosition: elRect.y - containerRect.y + yOffset,
+    yPosition: elRect.top - containerRect.top + yOffset,
     width: elRect.width,
     height: elRect.height,
     textSize: elFontSize
   })
 
   const border = () => {
-    p5.line(elRect.left, elRect.bottom, elRect.right, elRect.bottom)
+    p5.line(elRect.left, elRect.bottom - containerRect.top, elRect.right, elRect.bottom - containerRect.top)
   }
 
   transparentShape(p5, border, {stroke: true, fill: true, opacity: 0})
@@ -113,22 +113,25 @@ export const drawLabel = (p5, labelId, containerId) => {
   transparentText(p5, {
     text: value || inputId.toUpperCase(),
     xPosition: elRect.x,
-    yPosition: elRect.y - containerRect.y,
+    yPosition: elRect.top - containerRect.top,
     width: elRect.width,
     height: elRect.height,
     textSize: elFontSize
   })
 }
 
-export const drawXIcon = (p5, buttonId, hover, progress=1) => {
+export const drawXIcon = (p5, buttonId, containerId, hover, progress=1) => {
+  const container = document.getElementById(containerId)
+  const containerRect = container.getBoundingClientRect()
+
   const el = document.getElementById(buttonId)
   const elRect = el.getBoundingClientRect()
   // const opacity = getOpacity(hover) * progress
   // const length = screenSize == 'small' ? 7 : 10
   p5.strokeWeight(2)
   const xIcon = () => {
-    p5.line(elRect.left, elRect.top, elRect.right, elRect.bottom)
-    p5.line(elRect.left, elRect.bottom, elRect.right, elRect.top)
+    p5.line(elRect.left, elRect.top - containerRect.top, elRect.right, elRect.bottom - containerRect.top)
+    p5.line(elRect.left, elRect.bottom - containerRect.top, elRect.right, elRect.top - containerRect.top)
   }
 
   const options = { stroke: true, opacity: 0 }
