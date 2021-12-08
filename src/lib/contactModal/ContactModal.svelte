@@ -146,8 +146,10 @@
     margin-top: 10px;
     position: relative;
     transition: 0.2s ease-in-out;
+    font-size: 1rem;
     opacity: 0;
     align-self: flex-end;
+    height: 20px;
     top: -30px;
   }
 
@@ -158,6 +160,7 @@
 
   :focus + label, .filled + label {
     top: 0;
+    font-size: 0.75rem;
   }
 
   @media screen and (max-width: 700px) {
