@@ -110,6 +110,7 @@
     right: 0;
     z-index: 1;
     margin: 50px;
+    padding: 0;
     background-color: transparent;
     border: none;
     color: pink;
