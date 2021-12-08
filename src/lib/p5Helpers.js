@@ -74,6 +74,7 @@ export const transparentShape = (p5, shapeCallback, options) => {
 export const drawInput = (p5, inputId, containerId, value) => {
   p5.textFont('Sneak')
   const yOffset = 5
+  const xOffset = 5
 
   const container = document.getElementById(containerId)
   const containerRect = container.getBoundingClientRect()
@@ -84,7 +85,7 @@ export const drawInput = (p5, inputId, containerId, value) => {
 
   transparentText(p5, {
     text: value,
-    xPosition: elRect.x,
+    xPosition: elRect.x + xOffset,
     yPosition: elRect.top - containerRect.top + yOffset,
     width: elRect.width,
     height: elRect.height,

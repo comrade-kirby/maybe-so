@@ -128,6 +128,7 @@
 
   input, textarea {
     margin-top: 10px;
+    padding-left: 5px;
     border: none;
     font-family: Sneak;
     font-size: 1.25rem;
