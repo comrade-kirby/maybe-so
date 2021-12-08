@@ -44,15 +44,15 @@
     const drawInputs = () => {
       // p5.textAlign(p5.RIGHT, p5.CENTER)
       
-      drawInput(p5, 'name', nameValue)
-      drawInput(p5, 'email', emailValue)
-      drawInput(p5, 'introduction', introductionValue)
+      drawInput(p5, 'name', 'p5-contact', nameValue)
+      drawInput(p5, 'email', 'p5-contact', emailValue)
+      drawInput(p5, 'introduction', 'p5-contact', introductionValue)
     }
 
     const drawLabels = () => {
-      drawLabel(p5, 'name-label')
-      drawLabel(p5, 'email-label')
-      drawLabel(p5, 'intro-label')
+      drawLabel(p5, 'name-label', 'p5-contact')
+      drawLabel(p5, 'email-label', 'p5-contact')
+      drawLabel(p5, 'intro-label', 'p5-contact')
     }
   }
 </script>
@@ -155,10 +155,6 @@
 
   :focus + label, .filled + label {
     top: 0;
-  }
-
-  .p5Canvas {
-    background-color: red;
   }
 
   /* @media screen and (max-width: 700px) {

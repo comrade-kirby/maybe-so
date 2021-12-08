@@ -71,10 +71,13 @@ export const transparentShape = (p5, shapeCallback, options) => {
   shapeCallback()
 }
 
-export const drawInput = (p5, inputId, value) => {
+export const drawInput = (p5, inputId, containerId, value) => {
   p5.textFont('Sneak')
   const yOffset = 5
 
+  const container = document.getElementById(containerId)
+  const containerRect = container.getBoundingClientRect()
+  console.log(containerRect.y)
   const el = document.getElementById(inputId)
   const elRect = el.getBoundingClientRect()
   const elStyle = window.getComputedStyle(el, null)
@@ -83,7 +86,7 @@ export const drawInput = (p5, inputId, value) => {
   transparentText(p5, {
     text: value,
     xPosition: elRect.x,
-    yPosition: elRect.y + yOffset,
+    yPosition: elRect.y - containerRect.y + yOffset,
     width: elRect.width,
     height: elRect.height,
     textSize: elFontSize
@@ -96,8 +99,11 @@ export const drawInput = (p5, inputId, value) => {
   transparentShape(p5, border, {stroke: true, fill: true, opacity: 0})
 }
 
-export const drawLabel = (p5, labelId) => {
+export const drawLabel = (p5, labelId, containerId) => {
   p5.textFont('EditorialNew')
+  const container = document.getElementById(containerId)
+  const containerRect = container.getBoundingClientRect()
+
   const el = document.getElementById(labelId)
   const value = el.innerHTML
   const elRect = el.getBoundingClientRect()
@@ -107,7 +113,7 @@ export const drawLabel = (p5, labelId) => {
   transparentText(p5, {
     text: value || inputId.toUpperCase(),
     xPosition: elRect.x,
-    yPosition: elRect.y,
+    yPosition: elRect.y - containerRect.y,
     width: elRect.width,
     height: elRect.height,
     textSize: elFontSize
